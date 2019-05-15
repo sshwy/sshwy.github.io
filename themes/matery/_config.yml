@@ -256,11 +256,11 @@ livere:
 # Valine 评论模块的配置，默认为不激活，如要使用，就请激活该配置项，并设置 appId 和 appKey.
 valine:
   enable: true
-  appId: 264TIQDwmMrw50ALoeJcgS16-gzGzoHsz
-  appKey: hXqT5xIIBtn8JWo8AkTWu07F
+  appId: 6J18y6MnypkdE9NTJLAyBytY-MdYXbMMI
+  appKey: PwP1bMVSCd423mdrEbOEmf46
   notify: true
   verify: false
-  visitor: true
+  visitor: false
   avatar: 'mm' # Gravatar style : mm/identicon/monsterid/wavatar/retro/hide
   pageSize: 10
   placeholder: 'Siyuan小姐姐/ZZH女装&大佬AKIOI' # Comment Box placeholder
@@ -293,8 +293,8 @@ busuanziStatistics:
 # Add google analytics configuration
 # 添加 Google Analytics 配置
 googleAnalytics:
-  enable: false
-  id:
+  enable: true
+  id: UA-146805234-1
 
 # The used front-end library can be replaced with the corresponding CDN address as needed,
 # If the specific version is not specified below, you can use the latest version.

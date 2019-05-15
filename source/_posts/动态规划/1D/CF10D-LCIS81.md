@@ -17,13 +17,13 @@ n,m<=500
 
 # 分析
 
-用$f[i][j]$表示A与B构成的以$B_j$为结尾的LCIS的长度：
+用 $f[i][j]$ 表示 A 与 B 构成的以 $B_j$ 为结尾的 LCIS 的长度：
 
 $$
 f[i][j]=\max_{k=0}^{j-1}\{f[i-1][k]+1\},B_k<B_j
 $$
 
-时间复杂度$O(n^3)$.
+时间复杂度 $O(n^3)$.
 
 ```cpp
 #include<iostream>
@@ -34,18 +34,18 @@ int n,m,mx,mxn;
 int a[600],b[600],f[600][600],pre_b[600];
 
 void print_pre(int nk){
-	if(!nk)return;
+    if(!nk)return;
 	print_pre(pre_b[nk]);
 	cout<<b[nk]<<' ';
 }
 int main(){
-	cin>>n;
+    cin>>n;
     FOR(i,1,n)cin>>a[i];
 	cin>>m;
     FOR(i,1,m)cin>>b[i];
 	FOR(i,1,n)FOR(j,1,m)f[i][j]=1;
     FOR(i,1,n)FOR(j,1,m){
-		if(a[i]!=b[j])f[i][j]=f[i-1][j];
+        if(a[i]!=b[j])f[i][j]=f[i-1][j];
 		else {
             for(int k=j-1;k>=0;k--)if(b[k]<b[j]&&f[i][j]<f[i-1][k]+1)
                 f[i][j]=f[i-1][k]+1,pre_b[j]=k;

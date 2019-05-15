@@ -2,23 +2,11 @@ const gulp = require('gulp')
 const through = require('through2');
 const mathjax = require('gulp-mathjax-page')
 const size = require('gulp-size');
+const pangu = require('gulp-pangu');
 
 /* Latex转SVG的任务 */
 gulp.task('mathjax', function() {
     gulp.src('./public/**/*.html')
-        /*.pipe(through.obj(function(file,enc,cb){
-            var filestr=file.contents.toString();
-            var pat=new RegExp("<title[^>]*>[\\s\\S]*?</title>","g");
-            if(pat.test(filestr)){
-                console.log(filestr.match(pat)[0].replace('<title>','').replace('</title>',''));
-                console.log(file.path);
-            }
-            else {
-                console.log(file.path);
-            }
-            this.push(file);
-            cb();
-        }))*/
         .pipe(mathjax({
             mjpageConfig: {
                 format: ['TeX'],
@@ -250,17 +238,8 @@ gulp.task('encrypt', function() {
         .pipe(gulp.dest('./public')); //写入文件
 });
 
-gulp.task('new', function() {
-    gulp.src('./public/**/*.html')
-        .pipe(through.obj(function(file, enc, cb) {
-            var filestr = file.contents.toString();
-            var pat = new RegExp("<title[^>]*>[\\s\\S]*?</title>", "g");
-            if (!pat.test(filestr)) console.log("Can't find title!");
-            console.log(filestr.match(pat)[0].replace('<title>', '').replace('</title>', ''));
-            //console.log(file.path);
-            console.log();
-            this.push(file);
-            cb();
-        }))
-        .pipe(gulp.dest('./build')); //写入文件
+gulp.task('pangu', function() {//注意，这是魔改过原js的，不然对md语法不友好
+    gulp.src('./source/**/*.md')
+    .pipe(pangu())
+    .pipe(gulp.dest('./source')); //写入文件
 });

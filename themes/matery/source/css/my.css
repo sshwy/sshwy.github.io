@@ -46,3 +46,7 @@ html{
 .vlist {
     display: inline-block;
 }
+/* 暴走图设置 */
+img[src*="exp"] {
+    box-shadow: none;
+}
