@@ -1,0 +1,242 @@
+/* Custom styles. */
+body {
+    background: url(https://hexo-source-1257756441.cos.ap-chengdu.myqcloud.com/2019/03/30/2144.png);
+    background-attachment: fixed;
+    background-size:cover;
+    background-position: center;
+    line-height: 1.6;
+}
+code {
+    margin: 2px;
+}
+.post-button {
+    margin-top: 10px;
+}
+/* note块 */
+.post-body .note {
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+.post-body .note.success {
+    border-left-color: #3F51B5;
+    background-color: rgb(153, 225, 251);
+    transition: all 0.2s ease-in-out;
+}
+.post-body .note.success:hover {
+    background-color: rgb(132, 221, 255);
+    box-shadow: 1px 3px 5px 1px #6f6f6f70, 0 3px 1px -2px #99999947, 0 1px 5px 0 #88888861;
+}
+/* 文章 */
+.post-block {
+    padding: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    border-radius: 10px;
+    box-shadow: 1px 4px 6px 4px #0000003d, 0 3px 1px -2px #00000033, 0 1px 5px 0 #00000061;
+    background: rgba(255, 255, 255, 0.95);
+}
+#posts > article + article .post-block {
+    border-radius: 10px;
+    box-shadow: 1px 4px 6px 4px #0000003d, 0 3px 1px -2px #00000033, 0 1px 5px 0 #00000061;
+}
+.posts-expand {
+    padding-top: 10px;
+}
+.posts-expand .post-meta {
+    margin: 0px 0 3px 0;
+}
+/* 文章标题 */
+.posts-expand .post-title {
+    font-size: 1.9em;
+    font-weight: bolder;
+}
+.posts-expand .post-title-link {
+    color: #000;
+}
+/* 文章标签 */
+.posts-expand .post-tags a {
+    background-color: #03c9147a;    
+    color: #fff;
+    border-radius: 2em;
+    padding: 1px 8px 1px 8px;
+    border-bottom: 0px;
+    box-shadow: 1px 2px 6px 1px #53535326, 0 1px 1px -2px #49494933, 0 1px 3px 0 #62626261;
+    transition: all 0.2s ease-in-out;
+}
+.posts-expand .post-tags a:hover{
+    background-color: #03c914;
+    box-shadow: 1px 1px 6px 2px #2828283d, 0 1px 1px 0px #00000033, 0 1px 3px 0 #42424261;
+}
+/* 引用块 */
+blockquote {
+    background-color: #f5f5f5;
+    border-left: 5px solid #ddd;
+    padding-bottom: 1px;
+    padding-top: 16px;
+    margin-bottom: 10px;
+    box-shadow: 1px 3px 5px 1px #a2a2a270, 0 3px 1px -2px #bebebe47, 0 1px 5px 0 #a4a4a461;
+    transition: all 0.2s ease-in-out;
+}
+blockquote:hover {
+    box-shadow: 1px 3px 7px 1px #acacac, 0 3px 1px -2px #bebebe, 0 1px 5px 0 #a4a4a4;
+}
+/* 代码高亮块 */
+.highlight-wrap {
+    box-shadow: 1px 3px 5px 1px #a2a2a238, 0 3px 1px -2px #bebebe47, 0 1px 5px 0 #a4a4a438;
+    transition: all 0.2s ease-in-out;
+}
+.highlight-wrap:hover {
+    box-shadow: 1px 3px 7px 1px #acacacb0, 0 3px 1px -2px #bebebeb8, 0 1px 5px 0 #a4a4a4b8;
+}
+/* Mathjax SVG */
+.mjpage__block {
+    display: inline-block;
+     text-align: center;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    vertical-align: bottom;
+    margin-bottom: 20px;
+}
+a, span.exturl {
+    font-weight: bold;
+}
+.posts-collapse .collection-title h1, .posts-collapse .collection-title h2, .posts-collapse .collection-title h3 {
+    margin-left: 20px;
+}
+
+.back-to-top {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+/* 侧边栏顶部博客标题 */
+.site-title {
+    font-size: 22px;
+    font-weight: bold;
+}
+/* 侧边栏头部颜色 */
+.headband {
+    height: 3px;
+    background: #0052b7;
+}
+.site-meta {
+    box-shadow: 0 2px 15px 0 rgba(0,0,0,0.6);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: #0030b9;
+}
+.site-meta:hover {
+    background: #0034d3;
+    border-radius: 0 0 60px 60px;
+    box-shadow: 0 8px 20px -3px rgba(0,0,0,0.6);
+}
+.site-subtitle {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #ffffff;
+}
+/* 侧边栏头图下方item */
+.site-state-item{
+    transition: all 0.2s ease-in-out;
+}
+.site-state-item:hover {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 1px 2px 6px 1px #5353534a, 0 1px 1px -2px #49494952, 0 1px 3px 0 #62626261;
+    margin: 2px 0px 8px 0px
+}
+/* 侧边栏菜单 */
+.menu .menu-item a:hover, .menu-item-active a {
+    background: rgba(255, 255, 255, .7);
+    border-radius: 50px 0 0 50px;
+    border-color: transparent;
+    box-shadow: 0 8px 20px -8px rgba(0,0,0,0.4);
+}
+.menu .menu-item a, .menu .menu-item span.exturl {
+    padding: 6px 20px;
+    font-size: 14px;
+}
+/* 侧边栏 */
+.sidebar {
+    border-radius: 10px;
+    background: transparent;
+}
+.sidebar-inner {
+    border-radius: 10px;
+    box-shadow: 1px 4px 6px 4px #0000003d, 0 3px 1px -2px #00000033, 0 1px 5px 0 #00000061;
+    background: rgba(255, 255, 255, 0.85);
+}
+.header-inner {
+    border-bottom-right-radius:10px;
+    border-bottom-left-radius:10px;
+    box-shadow: 1px 4px 6px 4px #0000003d, 0 3px 1px -2px #00000033, 0 1px 5px 0 #00000061;
+    background: rgba(255, 255, 255, .85);
+}
+/* 底部页码 */
+.pagination {
+    box-shadow: 1px 4px 6px 4px #0000003d, 0 3px 1px -2px #00000033, 0 1px 5px 0 #00000061;
+    border-radius: 10px;
+    opacity: 0.85;
+}
+/* 本地搜索界面 */
+.local-search-popup {
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 8px 20px -8px rgba(0,0,0,0.3);
+    border-radius: 10px
+}
+.local-search-popup .local-search-header {
+    background: rgba(24, 136, 0, .7);
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-radius: 10px 10px 20px 20px;
+    color: #fff !important;
+    box-shadow: 0 8px 20px -8px rgba(0,0,0,0.3);
+}
+.local-search-popup .popup-btn-close {
+    border-left: 1px dashed #eee;
+}
+.local-search-popup #local-search-result {
+    height: calc(100% - 65px);
+}
+/* 评论 */
+.comments {
+    border-radius: 10px !important;
+    background: rgba(255, 255, 255, .85) !important;
+    padding: 25px !important;
+}
+.v * {
+    color: #000;
+    font-size: .99rem !important;
+}
+.v .vlist .vcard .vh .vtime {
+    color: #3a3a3a !important;
+}
+.v .vlist .vcard {
+    padding-top: 0px !important;
+}
+.v .vlist .vcard .vhead .vsys {
+    background: #cce2ff !important;
+    color: #001cbb !important;
+    border-radius: 1rem !important;
+}
+.v .power {
+    padding: 0 !important;
+}
+/* 站点底部 */
+.footer {
+    background-color: #ffffffb5;
+    color: #565656;
+    margin-top: 12px;
+}
+.footer-inner {
+    padding-left: 0;
+}
+/* 代码块 */
+pre {
+    tab-size: 5;
+}
+/* 分类页面 */
+.category-all-page .category-list {
+    width: 80%;
+    margin-left: 20%;
+    column-count: 2;
+}

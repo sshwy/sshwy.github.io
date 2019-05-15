@@ -1,0 +1,114 @@
+<%- partial('_partial/bg-cover') %>
+<style>
+    .frind-card1 {background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);}
+    .frind-card2 {background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);}
+    .frind-card3 {background-image: linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%);}
+    .frind-card4 {background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);}
+    .frind-card5 {background-image: linear-gradient(to top, #c471f5 0%, #fa71cd 100%);}
+    .frind-card6 {background-image: linear-gradient(to top, #48c6ef 0%, #6f86d6 100%);}
+    .frind-card7 {background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);}
+    .frind-card8 {background-image: linear-gradient(to top, #0c3483 0%, #a2b6df 100%, #6b8cce 100%, #a2b6df 100%);}
+    .frind-card9 {background-image: linear-gradient(to right, #ff758c 0%, #ff7eb3 100%);}
+    .frind-card0 {background-image: linear-gradient(to top, #f77062 0%, #fe5196 100%);}
+    /* 归档页的标签 */
+    .cd-timeline-block article .card .card-action {
+        padding: 0px 0px 0px 0px;
+    }
+</style>
+
+<main class="content">
+
+    <% if (theme.postCalendar) { %>
+    <%- partial('_widget/post-calendar') %>
+    <% } %>
+
+    <%
+    var acc=0;
+    var accumulator = function(){
+    	return ++acc;
+    }
+
+    // init year and month variable.
+    var year = '1970';
+    var month = '1970-01';
+
+    // post feature image.
+    var featureimg = '/medias/featureimages/0.jpg';
+    var featureImages = theme.featureImages;
+    %>
+
+    <div id="cd-timeline" class="container">
+        <% page.posts.each(function(post) { %>
+        <div class="cd-timeline-block">
+
+            <%# year. %>
+            <% if (date(post.date, 'YYYY') != year) { %>
+            <% year = date(post.date, 'YYYY'); %>
+            <div class="cd-timeline-img year" data-aos="fade-up">
+                <a href="<%- url_for('/archives/' + year) %>"><%- year %></a>
+            </div>
+            <% } %>
+
+            <%# month. %>
+            <% if (date(post.date, 'YYYY-MM') != month) { %>
+            <%
+                month = date(post.date, 'YYYY-MM');
+                var m = date(post.date, 'MM')
+            %>
+            <div class="cd-timeline-img month" data-aos="fade-up">
+                <a href="<%- url_for('/archives/' + year + '/' + m) %>"><%- m %></a>
+            </div>
+            <% } %>
+
+            <%# every day posts. %>
+            <div class="cd-timeline-img day" data-aos="fade-up">
+                <span><%- date(post.date, 'YYYY-MM-DD').substring(8, 10) %></span>
+            </div>
+            <article class="cd-timeline-content" data-aos="fade-up">
+                <div class="article col s12 m6 overflow-policy">
+                	<div class="card">
+		                <div class="card-content article-content frind-card<%- (accumulator() % 10) %>">
+		                    <a href="<%- url_for(post.path) %>">
+		                        <span class="card-title"><%- post.title %></span>
+		                    </a>
+		                    <div class="publish-info">
+		                        <span class="publish-date">
+		                            <i class="fa fa-clock-o fa-fw icon-date"></i><%= date(post.date, config.date_format) %>
+		                        </span>
+		                        <span class="publish-author">
+		                            <% if (post.categories && post.categories.length > 0) { %>
+		                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+		                            <% post.categories.forEach(category => { %>
+		                            <a href="<%- url_for(category.path) %>" class="post-category" target="_blank">
+		                            <%- category.name %>
+		                            </a>
+		                            <% }); %>
+		                            <% } else if (post.author && post.author.length > 0) { %>
+		                            <i class="fa fa-user fa-fw"></i>
+		                            <%- post.author %>
+		                            <% } else { %>
+		                            <i class="fa fa-user fa-fw"></i>
+		                            <%- config.author %>
+		                            <% } %>
+		                        </span>
+		                    </div>
+		                    <% if (post.tags && post.tags.length) { %>
+		                    <div class="card-action article-tags">
+		                        <% post.tags.forEach(tag => { %>
+		                        <a href="<%- url_for(tag.path) %>"><span class="chip bg-color"><%= tag.name %></span></a>
+		                        <% }); %>
+		                    </div>
+		                    <% } %>
+		                </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+        <% }); %>
+    </div>
+
+</main>
+
+<% if (page.total > 1) { %>
+<%- partial('_partial/paging') %>
+<% } %>
