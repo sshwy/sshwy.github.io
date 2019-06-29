@@ -1,0 +1,1117 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="标签: 网络流, Oier, Algorithm, Blog, sshwy, hwy, yaoyao">
+    <meta name="description" content="标签: 网络流 | Sshwy's Blog">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>标签: 网络流 | Sshwy's Blog</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<style type="text/css">
+    
+</style>
+
+
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.svg" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Sshwy's Blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.svg" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Sshwy's Blog</div>
+        <div class="logo-desc">
+            
+            辗转当作浮生妖，流离惊似尘世鬼
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/sshwy" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+    .github-corner .octo-arm {
+        animation: none;
+    }
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/sshwy" class="github-corner tooltipped hide-on-med-and-down" target="_blank" data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+
+        
+    </nav>
+
+</header>
+
+
+<div class="bg-cover pd-header about-cover">
+    <div class="container">
+    <div class="row">
+    <div class="col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+        <div class="brand">
+            <div class="title center-align">
+                
+                    泪痕 @ 一语成谶 @ 铁憨憨
+                
+            </div>
+
+            <div class="description center-align">
+                
+                    辗转当作浮生妖，流离惊似尘世鬼
+                
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+// 每天切换 banner 图.  Switch banner image every day.
+$('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay() + '.jpg)');
+</script>
+    </div>
+</div>
+
+
+<main class="content">
+
+    
+
+<div id="tags" class="container chip-container">
+    <div class="card">
+        <div class="card-content">
+            <div class="tag-title center-align">
+                <i class="fa fa-tags"></i>&nbsp;&nbsp;文章标签
+            </div>
+            <div class="tag-chips">
+                
+                
+                <a href="/tags/科学上网/" title="科学上网: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="科学上网" style="background-color: #F9EBEA;">科学上网
+                        <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/快读/" title="快读: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="快读" style="background-color: #F5EEF8;">快读
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/模板/" title="模板: 9">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="模板" style="background-color: #D5F5E3;">模板
+                        <span class="tag-length">9</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/Hexo/" title="Hexo: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="Hexo" style="background-color: #E8F8F5;">Hexo
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/DISK/" title="DISK: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="DISK" style="background-color: #FEF9E7;">DISK
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/VIM/" title="VIM: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="VIM" style="background-color: #F8F9F9;">VIM
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/碎碎念/" title="碎碎念: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="碎碎念" style="background-color: #82E0AA;">碎碎念
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/DP/" title="DP: 17">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="DP" style="background-color: #D7BDE2;">DP
+                        <span class="tag-length">17</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/题解/" title="题解: 12">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="题解" style="background-color: #A3E4D7;">题解
+                        <span class="tag-length">12</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/背包/" title="背包: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="背包" style="background-color: #85C1E9;">背包
+                        <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/倍增/" title="倍增: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="倍增" style="background-color: #F8C471;">倍增
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/ZROI/" title="ZROI: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="ZROI" style="background-color: #F9E79F;">ZROI
+                        <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/前缀和/" title="前缀和: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="前缀和" style="background-color: #F9E79F;">前缀和
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/专题/" title="专题: 9">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="专题" style="background-color: #E8F8F5;">专题
+                        <span class="tag-length">9</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/贪心/" title="贪心: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="贪心" style="background-color: #F9EBEA;">贪心
+                        <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/矩阵/" title="矩阵: 3">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="矩阵" style="background-color: #82E0AA;">矩阵
+                        <span class="tag-length">3</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/状压/" title="状压: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="状压" style="background-color: #F8C471;">状压
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/拓扑/" title="拓扑: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="拓扑" style="background-color: #82E0AA;">拓扑
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/LCA/" title="LCA: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="LCA" style="background-color: #FFF;">LCA
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/生成树/" title="生成树: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="生成树" style="background-color: #FEF9E7;">生成树
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/遍历/" title="遍历: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="遍历" style="background-color: #F9E79F;">遍历
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/DFS/" title="DFS: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="DFS" style="background-color: #F5EEF8;">DFS
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/Tarjan/" title="Tarjan: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="Tarjan" style="background-color: #D5F5E3;">Tarjan
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/图论/" title="图论: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="图论" style="background-color: #FFF;">图论
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/最短路/" title="最短路: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="最短路" style="background-color: #F8C471;">最短路
+                        <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/精选/" title="精选: 10">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="精选" style="background-color: #85C1E9;">精选
+                        <span class="tag-length">10</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/tarjan/" title="tarjan: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="tarjan" style="background-color: #F9E79F;">tarjan
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/字符串/" title="字符串: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="字符串" style="background-color: #D7BDE2;">字符串
+                        <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/POI/" title="POI: 8">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="POI" style="background-color: #F9E79F;">POI
+                        <span class="tag-length">8</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/KMP/" title="KMP: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="KMP" style="background-color: #F9EBEA;">KMP
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/AC-自动机/" title="AC 自动机: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="AC 自动机" style="background-color: #F8C471;">AC 自动机
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/期望/" title="期望: 3">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="期望" style="background-color: #F9E79F;">期望
+                        <span class="tag-length">3</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/容斥-搜索/" title="容斥, 搜索: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="容斥, 搜索" style="background-color: #FEF9E7;">容斥, 搜索
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/博弈论/" title="博弈论: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="博弈论" style="background-color: #F5EEF8;">博弈论
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/SG/" title="SG: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="SG" style="background-color: #F8F9F9;">SG
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/概率/" title="概率: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="概率" style="background-color: #82E0AA;">概率
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/数论/" title="数论: 8">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="数论" style="background-color: #E8F8F5;">数论
+                        <span class="tag-length">8</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/FFT/" title="FFT: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="FFT" style="background-color: #F9EBEA;">FFT
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/线段树/" title="线段树: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="线段树" style="background-color: #F8F9F9;">线段树
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/树套树/" title="树套树: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="树套树" style="background-color: #D7BDE2;">树套树
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/分块/" title="分块: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="分块" style="background-color: #F5EEF8;">分块
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/数据结构/" title="数据结构: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="数据结构" style="background-color: #F5EEF8;">数据结构
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/树链剖分/" title="树链剖分: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="树链剖分" style="background-color: #A3E4D7;">树链剖分
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/并查集/" title="并查集: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="并查集" style="background-color: #D7BDE2;">并查集
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/二分/" title="二分: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="二分" style="background-color: #F5EEF8;">二分
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/单调队列/" title="单调队列: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="单调队列" style="background-color: #D7BDE2;">单调队列
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/悬线法/" title="悬线法: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="悬线法" style="background-color: #F5EEF8;">悬线法
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/网络流/" title="网络流: 7">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-active " data-tagname="网络流" style="background-color: #F5EEF8;">网络流
+                        <span class="tag-length">7</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/二分图/" title="二分图: 3">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="二分图" style="background-color: #82E0AA;">二分图
+                        <span class="tag-length">3</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/匈牙利算法/" title="匈牙利算法: 2">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="匈牙利算法" style="background-color: #D5F5E3;">匈牙利算法
+                        <span class="tag-length">2</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/同余-原根-离散对数-gcd/" title="同余, 原根, 离散对数, gcd: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="同余, 原根, 离散对数, gcd" style="background-color: #85C1E9;">同余, 原根, 离散对数, gcd
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/容斥/" title="容斥: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="容斥" style="background-color: #F8C471;">容斥
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/欧拉函数/" title="欧拉函数: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="欧拉函数" style="background-color: #D7BDE2;">欧拉函数
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/筛/" title="筛: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="筛" style="background-color: #D5F5E3;">筛
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/质数/" title="质数: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="质数" style="background-color: #F9EBEA;">质数
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/欧几里德算法/" title="欧几里德算法: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="欧几里德算法" style="background-color: #85C1E9;">欧几里德算法
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/辗转相除/" title="辗转相除: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="辗转相除" style="background-color: #F9EBEA;">辗转相除
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/最大公约数/" title="最大公约数: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="最大公约数" style="background-color: #F8C471;">最大公约数
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/平衡树/" title="平衡树: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="平衡树" style="background-color: #82E0AA;">平衡树
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/Splay/" title="Splay: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="Splay" style="background-color: #A3E4D7;">Splay
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/树状数组/" title="树状数组: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="树状数组" style="background-color: #D7BDE2;">树状数组
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/组合数/" title="组合数: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default " data-tagname="组合数" style="background-color: #F5EEF8;">组合数
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+    <article id="articles" class="container articles">
+        <div class="row tags-posts">
+            
+            
+            <div class="article tag-post col s12 m6 l4 overflow-policy" data-tags="网络流" data-aos="fade-up">
+                <div class="card">
+                    <a href="/2019/01/31242/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="[ZJOI2010] 网络扩容">
+                            
+                            <span class="card-title">[ZJOI2010] 网络扩容</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019.01.14
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/图论/" class="post-category" target="_blank">
+                                图论
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="article tag-post col s12 m6 l4 overflow-policy" data-tags="网络流" data-aos="fade-up">
+                <div class="card">
+                    <a href="/2019/01/15208/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="[CQOI2012] 交换棋子">
+                            
+                            <span class="card-title">[CQOI2012] 交换棋子</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019.01.14
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/图论/" class="post-category" target="_blank">
+                                图论
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="article tag-post col s12 m6 l4 overflow-policy" data-tags="网络流" data-aos="fade-up">
+                <div class="card">
+                    <a href="/2019/01/28968/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="[SDOI2009] 晨跑">
+                            
+                            <span class="card-title">[SDOI2009] 晨跑</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019.01.12
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/图论/" class="post-category" target="_blank">
+                                图论
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="article tag-post col s12 m6 l4 overflow-policy" data-tags="网络流, 二分图" data-aos="fade-up">
+                <div class="card">
+                    <a href="/2019/01/34904/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="[LuoguP2764] 最小路径覆盖问题">
+                            
+                            <span class="card-title">[LuoguP2764] 最小路径覆盖问题</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019.01.05
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/图论/" class="post-category" target="_blank">
+                                图论
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="article tag-post col s12 m6 l4 overflow-policy" data-tags="专题, 精选, 网络流" data-aos="fade-up">
+                <div class="card">
+                    <a href="/2018/12/2855/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="网络流入门之最大流">
+                            
+                            <span class="card-title">网络流入门之最大流</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018.12.21
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/图论/" class="post-category" target="_blank">
+                                图论
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="article tag-post col s12 m6 l4 overflow-policy" data-tags="网络流" data-aos="fade-up">
+                <div class="card">
+                    <a href="/2018/12/12482/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="[LuoguP2756] 飞行员配对方案问题">
+                            
+                            <span class="card-title">[LuoguP2756] 飞行员配对方案问题</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018.12.21
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/图论/" class="post-category" target="_blank">
+                                图论
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="article tag-post col s12 m6 l4 overflow-policy" data-tags="网络流" data-aos="fade-up">
+                <div class="card">
+                    <a href="/2018/12/226/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="[LuoguP3386] 二分图匹配">
+                            
+                            <span class="card-title">[LuoguP3386] 二分图匹配</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018.12.21
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/图论/" class="post-category" target="_blank">
+                                图论
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </article>
+</main>
+
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由©<a href="https://sshwy.tk/" target="_blank">Sshwy</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+
+            
+			
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+            
+
+
+    <a href="mailto:jy.cat@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=1272918035" class="tooltipped" data-tooltip="QQ联系我: 1272918035" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+
+        </div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+<script src="/js/crypt.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-146805234-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-146805234-1');
+</script>
+
+
+
+
+
+
+
+</body></html>

@@ -1,0 +1,52 @@
+/* Here is your custom css styles. */
+html{
+    font-size: 16px;
+}
+.mjpage__block {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    vertical-align: bottom;
+    margin-bottom: 20px;
+}
+/* 顶栏Logo的调整 */
+@media only screen and (min-width: 515px) {
+    nav .brand-logo {
+        font-size: 2.0rem;
+    }
+}
+@media only screen and (max-width: 514px) {
+    nav .brand-logo {
+        font-size: 1.85rem;
+    }
+}
+@media only screen and (max-width: 500px) {
+    nav .brand-logo {
+        font-size: 1.7rem;
+    }
+}
+@media only screen and (max-width: 450px) {
+    nav .brand-logo {
+        font-size: 1.6rem;
+    }
+}
+@media only screen and (max-width: 415px) {
+    nav .brand-logo {
+        font-size: 1.1rem;
+    }
+}
+/* 卡片标题 */
+.card .card-title{
+    color: #fff;
+    font-weight: bold;
+}
+/* Valine 评论 */
+.vlist {
+    display: inline-block;
+}
+/* 暴走图设置 */
+img[src*="exp"] {
+    box-shadow: none;
+}

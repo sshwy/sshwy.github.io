@@ -1,0 +1,1237 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Hexo 博客搭建 + Github 配置 + 域名配置, Oier, Algorithm, Blog, sshwy, hwy, yaoyao">
+    <meta name="description" content="摘要
+Hexo 作为一款轻量级的静态博客博客框架，本身访问的速度很快，官网的主题也很多，美观又高效。然而在配置的过程中仍有一些棘手的地方，例如 Git 的使用，SSH 秘钥的生成，插件的使用等。本文将从一个相对细致的角度介绍 Hexo 搭建">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Hexo 博客搭建 + Github 配置 + 域名配置 | Sshwy's Blog</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<style type="text/css">
+    
+</style>
+
+
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.svg" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Sshwy's Blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.svg" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Sshwy's Blog</div>
+        <div class="logo-desc">
+            
+            辗转当作浮生妖，流离惊似尘世鬼
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/sshwy" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+    .github-corner .octo-arm {
+        animation: none;
+    }
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/sshwy" class="github-corner tooltipped hide-on-med-and-down" target="_blank" data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+
+        
+    </nav>
+
+</header>
+
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Hexo 博客搭建 + Github 配置 + 域名配置
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Hexo/" target="_blank">
+                                <span class="chip bg-color">Hexo</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Others/" class="post-category" target="_blank">
+                                Others
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-10-06
+                </div>
+
+                
+				
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p><strong>摘要</strong></p>
+<p>Hexo 作为一款轻量级的静态博客博客框架，本身访问的速度很快，官网的主题也很多，美观又高效。然而在配置的过程中仍有一些棘手的地方，例如 Git 的使用，SSH 秘钥的生成，插件的使用等。本文将从一个相对细致的角度介绍 Hexo 搭建到使用的全过程。</p>
+<a id="more"></a>
+<h1 id="前置技能"><a href="#前置技能" class="headerlink" title="前置技能"></a>前置技能</h1><ul>
+<li>Linux 系统（笔者推荐 deepin）</li>
+<li>Linux 命令行（cd cat sudo 之类的基础命令）</li>
+</ul>
+<h1 id="Hexo-本地搭建-amp-使用"><a href="#Hexo-本地搭建-amp-使用" class="headerlink" title="Hexo 本地搭建 &amp; 使用"></a>Hexo 本地搭建 &amp; 使用</h1><p>优先选择从 <a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="noopener">官网</a> 上学习</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>官网已有详细的说明，笔者在这里对命令做一个整理：</p>
+<p>安装 git ，因为 Hexo 通过 git 上传博客</p>
+<p>使用 nvm 安装 Node.js</p>
+<pre><code>sudo apt-get install git-core
+wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+</code></pre><p>执行完后关闭当前终端，重新打开一个终端，再执行命令完成 Node.js 安装：</p>
+<p>安装 Hexo</p>
+<pre><code>nvm install stable
+npm install -g hexo-cli
+</code></pre><h2 id="主要配置"><a href="#主要配置" class="headerlink" title="主要配置"></a>主要配置</h2><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>在当前目录下新建 [folder] 文件夹，作为本地 Hexo 的根目录，并在里面搭建一个初始的 Hexo 博客：</p>
+<pre><code>hexo init [folder]
+</code></pre><p>接下来的操作大多在根目录下进行（即 cd 到 [folder]）：</p>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><ul>
+<li><code>hexo clean</code> 清除本地静态生成博客的缓存</li>
+<li><code>hexo g</code> 生成静态文件</li>
+<li><code>hexo d</code> 发布到 git 服务器上（见下文）</li>
+<li><code>hexo s</code> 本地端口预览</li>
+</ul>
+<h2 id="通过本地服务预览"><a href="#通过本地服务预览" class="headerlink" title="通过本地服务预览"></a>通过本地服务预览</h2><p>在根目录下先执行 <code>hexo g</code>，再执行 <code>hexo s</code> 后，根据它的提示，可以在 <code>localhost:4000</code> 预览你的博客：（初始博客的主题背景）：<br><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1538815232650&amp;di=67d0433e337f3af4ad3fa0101270f01f&amp;imgtype=jpg&amp;src=http%3A%2F%2Fimg1.imgtn.bdimg.com%2Fit%2Fu%3D996511926%2C3300922985%26fm%3D214%26gp%3D0.jpg" alt="初始博客的主题背景"></p>
+<p><strong>其余配置参加官网和其他作者的博客，限于篇幅不做详细介绍</strong></p>
+<h1 id="Git-amp-Github-配置"><a href="#Git-amp-Github-配置" class="headerlink" title="Git&amp;Github 配置"></a>Git&amp;Github 配置</h1><h2 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h2><p>安装 git ，因为 Hexo 通过 git 上传博客：</p>
+<pre><code>sudo apt-get install git-core
+</code></pre><h2 id="Github-配置"><a href="#Github-配置" class="headerlink" title="Github 配置"></a>Github 配置</h2><p>在 Github 上创建账号（用户名和你的域名有关，所以好生斟酌～）</p>
+<p>新建一个项目（repository），名称叫做 <code>USERNAME.github.io</code>（注意，是 <code>用户名.github.io</code>），公开，其他的不管。</p>
+<p>在项目的 Setting 里启用 Github Pages，随便选一个主题（之后会被 Hexo 博客覆盖，所以随便选，但不能不选），确认。</p>
+<p>解释一下，之所以使用 <code>USERNAME.github.io</code> 作为项目名称，是为了 Github Pages 生成 <code>http://USERNAME.github.io</code> 的域名；如果改成 <code>NAME.github.io</code>，域名就会变成 <code>http://USERNAME/NAME.github.io</code>，显然不美观（当然域名解析是可以的，不过还要考虑证书的问题，不然没有小绿锁……）</p>
+<h2 id="与-Github-建立-SSH-链接"><a href="#与-Github-建立-SSH-链接" class="headerlink" title="与 Github 建立 SSH 链接"></a>与 Github 建立 SSH 链接</h2><p>要将本地 git 中的代码上传到服务器的 git，一般使用 <code>git push</code> 命令，有两种方式连接：html 和 ssh</p>
+<p>html 连接要求输入服务器（github）用户名和密码来建立连接，而 ssh-key 则通过验证本地的私钥和公钥的匹配来建立连接，比 html 操作更方便，也更安全。</p>
+<p>要配置 ssh-key，在<strong>主目录</strong>下执行</p>
+<pre><code>ssh-keygen -t rsa -C “email@email.com”   // 邮箱仅用于标识，不要求和用户名相同
+</code></pre><p>运行过程中，会要求你先回车，再重复输入两次 phrase（这是 ssh 连接的密码）。</p>
+<p>然后浏览器打开 <code>github - Settings - SSH and GPG keys</code>，新建 <code>SSH key</code>，并将 <code>./.ssh/id_rsa.pub</code> 的内容复制上去，保存即可。</p>
+<p>测试连接是否成功：</p>
+<pre><code>ssh -T git@github.com
+</code></pre><p>可能会有不成功的错误码，按照它的提示操作几次。</p>
+<p>如果实在无法建立 ssh 连接，就用 http 连接吧。</p>
+<h1 id="Hexo-网站博客搭建-amp-备份"><a href="#Hexo-网站博客搭建-amp-备份" class="headerlink" title="Hexo 网站博客搭建 &amp; 备份"></a>Hexo 网站博客搭建 &amp; 备份</h1><h2 id="上传博客到-Github"><a href="#上传博客到-Github" class="headerlink" title="上传博客到 Github"></a>上传博客到 Github</h2><ul>
+<li>有了 ssh-key 的连接，则修改博客根目录下的 <code>_config.yml</code>，找到 deploy 的配置：<pre><code># Deployment
+## Docs: https://hexo.io/docs/deployment.html
+deploy:
+  type: git
+  repo: git@github.com:XXX/XXX.github.io.git
+          #其实就是你博客所在项目的 CloneWith SSH/HTTP 里复制框的代码，也可以用 HTTP
+  branch: master #默认
+</code></pre></li>
+<li>保存后，运行 <code>hexo g</code> 生成静态文件，<code>hexo d</code> 上传到 github.</li>
+<li>如果配置成功，访问 <code>XXX.github.io</code> 即可看到你的博客。</li>
+</ul>
+<h2 id="博客备份"><a href="#博客备份" class="headerlink" title="博客备份"></a>博客备份</h2><p>hexo 访问速度快，可是要随时随地编辑博客就比较困难。对博客做一个备份，每次上传博客的同时上传备份，即可随时随地编辑博客。通过在博客项目下新建 <code>hexo</code> 分支，将备份上传到这个分支上即可（同样使用 <code>git+ssh</code> 上传）。</p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><p>只需在第一次配置备份的时候执行</p>
+<p>在博客根目录下初始化 git（相当于将博客根目录下的文件（不是生成的静态文件，是原生 hexo 文件）上传到 github 该博客项目的 <code>hexo</code> 分支）</p>
+<pre><code>git init
+</code></pre><p>本地创建 <code>hexo</code> 分支</p>
+<pre><code>git checkout -b hexo
+</code></pre><p>添加远程仓库</p>
+<pre><code>git remote add origin git@github.com:XXX/XXX.github.io.git #SSH
+</code></pre><p>或者</p>
+<pre><code>git remote add origin https://github.com/XXX/XXX.github.io.git #HTTP
+</code></pre><h3 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h3><p>每次备份，执行以下操作</p>
+<ul>
+<li>将当前目录下的文件添加到 git<pre><code>git add .
+</code></pre></li>
+<li>提交到本地 git 仓库<pre><code>git commit -m "init" #init 是发布的名字，随便填
+</code></pre></li>
+<li>发布到代码仓库的 hexo 分支<pre><code>git push origin hexo
+</code></pre></li>
+</ul>
+<h3 id="其他事项"><a href="#其他事项" class="headerlink" title="其他事项"></a>其他事项</h3><ul>
+<li>有时在备份的时候会提示无法上传，原因大概是你在本地删除两一些目录，导致上传失败的；这时可以先在网站上删除网站上的分支，再重新执行上述命令即可。</li>
+<li>有时获取备份后的文件，发现 <code>hexo s</code> 要报错，那么可在 <code>.gitignore</code> 文件中删除 <code>db.json</code> 再上传备份。<code>.gitignore</code> 记录的是 git 命令不上传的文件（忽略），其中 <code>node_modules/</code> 也可以删去（有时对插件做了修改的话），反正文件也不大。</li>
+</ul>
+<h1 id="渲染-Mathjax"><a href="#渲染-Mathjax" class="headerlink" title="渲染 Mathjax"></a>渲染 Mathjax</h1><p>Hexo 作为轻量级静态博客，默认是不支持渲染 Mathjax 的；即使启用了 NexT 主题中的 Mathjax，也无法渲染复杂的数学公式。本文将介绍使用 kramed 引擎渲染 Mathjax 的方法.</p>
+<!--more-->
+<h2 id="Markdown-与-Mathjax-的冲突"><a href="#Markdown-与-Mathjax-的冲突" class="headerlink" title="Markdown 与 Mathjax 的冲突"></a>Markdown 与 Mathjax 的冲突</h2><p>之所以无法渲染 Mathjax，典型的原因在于 <code>_</code> 和的渲染：Markdown 先将其渲染为斜体，而导致 Mathjax 在渲染的时候找不到该字符。因此我们的目标就是更换渲染引擎，并解除 Markdown 对 <code>_</code> 这类冲突字符的渲染。</p>
+<h2 id="关于-Kramed-引擎"><a href="#关于-Kramed-引擎" class="headerlink" title="关于 Kramed 引擎"></a>关于 Kramed 引擎</h2><p>据说 kramed 引擎是专门为了支持渲染 Mathjax 而设计的，用于取代 marked 的引擎。但是即使使用了 Kramed，也无法解决上述冲突；仍需要我们修改正则表达式来解除。</p>
+<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><ul>
+<li><p>更换引擎（卸载原有的 marked，改为 kramed）：</p>
+<pre><code>npm uninstall hexo-renderer-marked --save
+npm install hexo-renderer-kramed --save
+</code></pre></li>
+<li><p>打开 <code>&lt;YourRoot&gt;/node_modules/kramed/lib/rules/inline.js</code>：</p>
+<ul>
+<li><p>将第 11 行的</p>
+<pre><code>escape: /^\\([\\`*{}\[\]()#$+\-.!_&gt;])/,
+</code></pre><p>修改为</p>
+<pre><code>escape: /^\\([`*\[\]()# +\-.!_&gt;])/,
+</code></pre></li>
+<li><p>将第 20 行的</p>
+<pre><code>em: /^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,
+</code></pre><p>修改为</p>
+<pre><code>em: /^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,
+</code></pre></li>
+</ul>
+</li>
+</ul>
+<p>修改完成（记得先 <code>hexo clean</code> 再 generator）.</p>
+<h1 id="Hexo-插件-小-Bug"><a href="#Hexo-插件-小-Bug" class="headerlink" title="Hexo 插件 - 小 Bug"></a>Hexo 插件 - 小 Bug</h1><h2 id="hexo-all-minifier"><a href="#hexo-all-minifier" class="headerlink" title="hexo-all-minifier"></a>hexo-all-minifier</h2><p>如果报错说没有 <code>libpng</code>：</p>
+<pre><code>sudo apt-get install libpng-dev
+</code></pre><h2 id="hexo-auto-category-2018-10-6"><a href="#hexo-auto-category-2018-10-6" class="headerlink" title="hexo-auto-category(2018.10.6)"></a>hexo-auto-category(2018.10.6)</h2><p><code>hexo-hexo-auto-category</code> 是一个根据文件目录名自动生成标签的插件，而作者在使用过程中遇到一些问题，在此做修正。</p>
+<ul>
+<li><a href="https://hexo.io/plugins/" target="_blank" rel="noopener">Hexo-Plugin</a></li>
+<li><a href="https://github.com/xu-song/hexo-auto-category" target="_blank" rel="noopener">github 项目</a></li>
+</ul>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>按照 github 上开发者的步骤操作，出现以下情况：</p>
+<pre><code>INFO  Generated: categories [] for post [C++memset() 小记』
+INFO  Generated: categories [] for post [C++ 常数优化』
+INFO  Generated: categories [] for post [C++ 数据读入函数』
+INFO  Generated: categories [] for post [C++ 语言常识』
+INFO  Generated: categories [] for post [C++ 输入输出格式控制符』
+INFO  Generated: categories [] for post [C++ 随机数据生成』
+</code></pre><p>也就是说，它为我的文章创建了空分类</p>
+<p>打开文章的 markdown 文件，发现 category 变成了 <code>[]</code></p>
+<p>在这种情况下继续运行 <code>hexo s</code> 的话，终端会不停输出信息（貌似无限循环了）</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>分析插件的源代码，发现 category 的生成是将文章的 slug(<code>data.slug</code>) 以’/‘为分隔符，用 spilt 划分为<strong>以目录名称为元素</strong>的数组，然后将文章的标签依次赋值为数组中的元素（前一个元素是后一个元素的父分类）</p>
+<p>然而在解析 slug 的时候，有些文章被解析为以 <code>-</code> 分隔的形式，使得 <code>/</code> 没有将目录成功分隔，比如：</p>
+<ul>
+<li>我的一篇文章原始路径 <code>_post/Programming/Python/ 排序.md</code></li>
+<li>slug 本来应该将其解析为 <code>Programming/Python/ 排序</code>（slug 会自动去掉_post，并把文件名用文章标题 <code>:title</code> 代替），数组 spilt 后是 <code>["Programming","Python","排序"]</code>，然后忽略最后一个元素（那是文章标题），用其他元素生成标签。</li>
+<li>可是插件却错误解析成 <code>Programming-Python- 排序</code>，于是数组中的元素为 <code>["Programming-Python- 排序"]</code>，标签为空，被赋值为 <code>[]</code>（空数组）</li>
+</ul>
+<h3 id="Bug-修复"><a href="#Bug-修复" class="headerlink" title="Bug 修复"></a>Bug 修复</h3><p>把 slug 改成 source（原始路径），用 <code>/</code> 分隔</p>
+<p>这时数组的开头元素多了 <code>"_post"</code>，所以舍弃第一个和最后一个元素，用中间的生成标签。</p>
+<h3 id="操作-1"><a href="#操作-1" class="headerlink" title="操作"></a>操作</h3><p>在 <code>&lt;YourHexoRoot&gt;/node_modules/hexo-auto-category/lib/logic.js</code> 中，将</p>
+<pre><code>var categories = data.slug.split('/');
+</code></pre><p>修改为</p>
+<pre><code>var categories = data.source.split('/');
+</code></pre><p>再将</p>
+<pre><code>tmpPost.categories = categories.slice(0, Math.min(depth, categories.length-1));
+</code></pre><p>修改为</p>
+<pre><code>if(1&lt;Math.min(depth,categories.length-1))
+    tmpPost.categories = categories.slice(1, Math.min(depth, categories.length-1));
+else
+    tmpPost.categories = ["Uncategorized"].slice();// 未分类
+</code></pre><p>问题解决。</p>
+<h3 id="等待作者修复的-Bug"><a href="#等待作者修复的-Bug" class="headerlink" title="等待作者修复的 Bug"></a>等待作者修复的 Bug</h3><p>在执行 <code>hexo s</code> 的时候，<code>hexo-hexo-auto-category</code> 会不停的创建分类（无限循环）</p>
+<p>目前只能先 <code>_config.yml</code> 先打开插件生成静态文件，再关闭插件在本地预览</p>
+<h1 id="Hexo-自定义域名"><a href="#Hexo-自定义域名" class="headerlink" title="Hexo 自定义域名"></a>Hexo 自定义域名</h1><p><em>2019.3.16 更新</em></p>
+<p>在 GithubPages 上部署 Hexo 博客的域名是 <code>.github.io</code> 的，显然并不是所有人都能忍受这么长的域名。接下来笔者介绍如何将 GithubPages 的域名自定义为自己注册的域名</p>
+<h2 id="注册域名"><a href="#注册域名" class="headerlink" title="注册域名"></a>注册域名</h2><p>这里推荐 frenom 的域名，最多可以免费一年，到期就续订</p>
+<p>注册完后，我们需要设置三个 DNS 解析</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th></th>
+<th>记录值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>@</td>
+<td>192.30.252.153</td>
+</tr>
+<tr>
+<td>A</td>
+<td>@</td>
+<td>192.30.252.154</td>
+</tr>
+<tr>
+<td>CNAME</td>
+<td>www</td>
+<td>yourdomin.com</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>前面两条是指向 GIthubPages 的 IP 地址；第 3 个是把 www.youdomin.com 定向到 yourdomin.com</p>
+<p>然后我们需要在 Public 下新建一个名为 <code>CNAME</code>（名称大写）的文件，里面写入 yourdomin.com，即你注册的域名，然后 Deploy 上去</p>
+<p>等待 DNS 服务器广播完成后，你的域名就可以访问啦</p>
+<p><img src="https://hexo-source-1257756441.cos.ap-chengdu.myqcloud.com/2019/03/16/1220.png" alt="1552710011041"></p>
+<p>在 github 的 settings 里面看大概是这个样子的</p>
+<h1 id="博客-CDN-加速"><a href="#博客-CDN-加速" class="headerlink" title="博客 CDN 加速"></a>博客 CDN 加速</h1><p>Github 的服务器在国外，因此访问速度较慢；我们可以采用 CDN 加速</p>
+<p>Hexo 博客的 CDN 加速基于自定义域名的基础上，因此请先给博客添加自定义域名</p>
+<p>我选择 cloudflare 来做 CDN 加速。首先注册账号后添加网站（把自定义的域名输进去）</p>
+<p>然后 cloudflare 就会自动读取这个域名的 DNS 解析并复制一份到 cloudflare 的服务器上</p>
+<p>然后它会让你修改你域名的 nameserver 为 cloudflare 的 nameserver，按照提示的步骤修改即可。DNS 解析记录就不用操心了，因为人家已经帮你搬过来了</p>
+<p>完了过后等待 re-check 完成后，你的博客就可以使用 cloudflare 的 CDN 加速了</p>
+<p>cloudflare 不仅支持 CDN 加速，它还可以一键帮你添加 SSL 证书，然后你的博客就可以有小绿锁了。具体操作直接看 Crypto 选项卡下面的内容，功能很多</p>
+
+            </div>
+            <hr>
+
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="https://sshwy.tk" class="b-link-green">Sshwy's Blog</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2018/10/4586/" class="b-link-green">Hexo 博客搭建 + Github 配置 + 域名配置</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+    #vcomments input[type=text],
+    #vcomments input[type=email],
+    #vcomments input[type=url],
+    #vcomments textarea {
+        box-sizing: border-box;
+    }
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+    #vcomments a {
+        padding: 0 2px;
+        color: #42b983;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+    #vcomments table, th, td {
+        border: 0;
+    }
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+    #vcomments table td {
+        min-width: 80px;
+    }
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+    #vcomments dfn {
+        font-style: italic;
+    }
+    #vcomments small {
+        font-size: 85%;
+    }
+    #vcomments cite {
+        font-style: normal;
+    }
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+    #vcomments table td {
+        min-width: 80px;
+    }
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div id="vcomments" class="card-content"></div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: '6J18y6MnypkdE9NTJLAyBytY-MdYXbMMI',
+        appKey: 'PwP1bMVSCd423mdrEbOEmf46',
+        notify: 'true' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'false' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'Siyuan小姐姐/ZZH女装&amp;大佬AKIOI'
+    });
+</script>
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2018/10/13169/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="【笔记】数和序列">
+                        
+                        <span class="card-title">【笔记】数和序列</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">前置知识极端原理每个非空的正整数集合都有一个最小元。
+每个非空的负整数集合都有一个最大元。
+有理数和无理数如果存在整数 <span class="mjpage"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="12.705ex" height="2.843ex" style="vertical-align: -0.838ex; margin-left: -0.089ex;" viewBox="-38.5 -863.1 5470.4 1223.9" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<path stroke-width="1" id="E1-MJMATHI-70" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path>
+<path stroke-width="1" id="E1-MJMAIN-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path>
+<path stroke-width="1" id="E1-MJMATHI-71" d="M33 157Q33 258 109 349T280 441Q340 441 372 389Q373 390 377 395T388 406T404 418Q438 442 450 442Q454 442 457 439T460 434Q460 425 391 149Q320 -135 320 -139Q320 -147 365 -148H390Q396 -156 396 -157T393 -175Q389 -188 383 -194H370Q339 -192 262 -192Q234 -192 211 -192T174 -192T157 -193Q143 -193 143 -185Q143 -182 145 -170Q149 -154 152 -151T172 -148Q220 -148 230 -141Q238 -136 258 -53T279 32Q279 33 272 29Q224 -10 172 -10Q117 -10 75 30T33 157ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"></path>
+<path stroke-width="1" id="E1-MJMAIN-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path>
+<path stroke-width="1" id="E1-MJMAIN-2260" d="M166 -215T159 -215T147 -212T141 -204T139 -197Q139 -190 144 -183L306 133H70Q56 140 56 153Q56 168 72 173H327L406 327H72Q56 332 56 347Q56 360 70 367H426Q597 702 602 707Q605 716 618 716Q625 716 630 712T636 703T638 696Q638 692 471 367H707Q722 359 722 347Q722 336 708 328L451 327L371 173H708Q722 163 722 153Q722 140 707 133H351Q175 -210 170 -212Q166 -215 159 -215Z"></path>
+<path stroke-width="1" id="E1-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path>
+<path stroke-width="1" id="E1-MJMAIN-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path>
+</defs>
+<g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+ <use xlink:href="#E1-MJMATHI-70" x="0" y="0"></use>
+ <use xlink:href="#E1-MJMAIN-2C" x="503" y="0"></use>
+ <use xlink:href="#E1-MJMATHI-71" x="948" y="0"></use>
+ <use xlink:href="#E1-MJMAIN-28" x="1409" y="0"></use>
+ <use xlink:href="#E1-MJMATHI-70" x="1798" y="0"></use>
+ <use xlink:href="#E1-MJMAIN-2C" x="2302" y="0"></use>
+ <use xlink:href="#E1-MJMATHI-71" x="2747" y="0"></use>
+ <use xlink:href="#E1-MJMAIN-2260" x="3485" y="0"></use>
+ <use xlink:href="#E1-MJMAIN-30" x="4541" y="0"></use>
+ <use xlink:href="#E1-MJMAIN-29" x="5042" y="0"></use>
+</g>
+</svg></span> ，使得 <span class="mjpage"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="7.549ex" height="2.843ex" style="vertical-align: -0.838ex;" viewBox="0 -863.1 3250.1 1223.9" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<path stroke-width="1" id="E2-MJMATHI-72" d="M21 287Q22 290 23 295T28 317T38 348T53 381T73 411T99 433T132 442Q161 442 183 430T214 408T225 388Q227 382 228 382T236 389Q284 441 347 441H350Q398 441 422 400Q430 381 430 363Q430 333 417 315T391 292T366 288Q346 288 334 299T322 328Q322 376 378 392Q356 405 342 405Q286 405 239 331Q229 315 224 298T190 165Q156 25 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 114 189T154 366Q154 405 128 405Q107 405 92 377T68 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path>
+<path stroke-width="1" id="E2-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path>
+<path stroke-width="1" id="E2-MJMATHI-70" d="M23 287Q24 290 25 295T30 317T40 348T55 381T75 411T101 433T134 442Q209 442 230 378L240 387Q302 442 358 442Q423 442 460 395T497 281Q497 173 421 82T249 -10Q227 -10 210 -4Q199 1 187 11T168 28L161 36Q160 35 139 -51T118 -138Q118 -144 126 -145T163 -148H188Q194 -155 194 -157T191 -175Q188 -187 185 -190T172 -194Q170 -194 161 -194T127 -193T65 -192Q-5 -192 -24 -194H-32Q-39 -187 -39 -183Q-37 -156 -26 -148H-6Q28 -147 33 -136Q36 -130 94 103T155 350Q156 355 156 364Q156 405 131 405Q109 405 94 377T71 316T59 280Q57 278 43 278H29Q23 284 23 287ZM178 102Q200 26 252 26Q282 26 310 49T356 107Q374 141 392 215T411 325V331Q411 405 350 405Q339 405 328 402T306 393T286 380T269 365T254 350T243 336T235 326L232 322Q232 321 229 308T218 264T204 212Q178 106 178 102Z"></path>
+<path stroke-width="1" id="E2-MJMAIN-2F" d="M423 750Q432 750 438 744T444 730Q444 725 271 248T92 -240Q85 -250 75 -250Q68 -250 62 -245T56 -231Q56 -221 230 257T407 740Q411 750 423 750Z"></path>
+<path stroke-width="1" id="E2-MJMATHI-71" d="M33 157Q33 258 109 349T280 441Q340 441 372 389Q373 390 377 395T388 406T404 418Q438 442 450 442Q454 442 457 439T460 434Q460 425 391 149Q320 -135 320 -139Q320 -147 365 -148H390Q396 -156 396 -157T393 -175Q389 -188 383 -194H370Q339 -192 262 -192Q234 -192 211 -192T174 -192T157 -193Q143 -193 143 -185Q143 -182 145 -170Q149 -154 152 -151T172 -148Q220 -148 230 -141Q238 -136 258 -53T279 32Q279 33 272 29Q224 -10 172 -10Q117 -10 75 30T33 157ZM352 326Q329 405 277 405Q242 405 210 374T160 293Q131 214 119 129Q119 126 119 118T118 106Q118 61 136 44T179 26Q233 26 290 98L298 109L352 326Z"></path>
+</defs>
+<g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+ <use xlink:href="#E2-MJMATHI-72" x="0" y="0"></use>
+ <use xlink:href="#E2-MJMAIN-3D" x="729" y="0"></use>
+ <use xlink:href="#E2-MJMATHI-70" x="1785" y="0"></use>
+ <use xlink:href="#E2-MJMAIN-2F" x="2289" y="0"></use>
+ <use xlink:href="#E2-MJMATHI-71" x="2789" y="0"></use>
+</g>
+</svg></span> ，则称实数 <span class="mjpage"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.049ex" height="1.676ex" style="vertical-align: -0.338ex;" viewBox="0 -576.1 451.5 721.6" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<path stroke-width="1" id="E3-MJMATHI-72" d="M21 287Q22 290 23 295T28 317T38 348T53 381T73 411T99 433T132 442Q161 442 183 430T214 408T225 388Q227 382 228 382T236 389Q284 441 347 441H350Q398 441 422 400Q430 381 430 363Q430 333 417 315T391 292T366 288Q346 288 334 299T322 328Q322 376 378 392Q356 405 342 405Q286 405 239 331Q229 315 224 298T190 165Q156 25 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 114 189T154 366Q154 405 128 405Q107 405 92 377T68 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path>
+</defs>
+<g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+ <use xlink:href="#E3-MJMATHI-72" x="0" y="0"></use>
+</g>
+</svg></span> 是有理数，否则 <span class="mjpage"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.049ex" height="1.676ex" style="vertical-align: -0.338ex;" viewBox="0 -576.1 451.5 721.6" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<path stroke-width="1" id="E4-MJMATHI-72" d="M21 287Q22 290 23 295T28 317T38 348T53 381T73 411T99 433T132 442Q161 442 183 430T214 408T225 388Q227 382 228 382T236 389Q284 441 347 441H350Q398 441 422 400Q430 381 430 363Q430 333 417 315T391 292T366 288Q346 288 334 299T322 328Q322 376 378 392Q356 405 342 405Q286 405 239 331Q229 315 224 298T190 165Q156 25 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 114 189T154 366Q154 405 128 405Q107 405 92 377T68 316T57 280Q55 278 41 278H27Q21 284 21 287Z"></path>
+</defs>
+<g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+ <use xlink:href="#E4-MJMATHI-72" x="0" y="0"></use>
+</g>
+</svg></span> 是无理数。
+取整 &amp;</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018.10.13
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/数学/" class="post-category" target="_blank">
+                                    数学
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/数论/" target="_blank">
+                        <span class="chip bg-color">数论</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2018/10/17103/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="DP 小汇">
+                        
+                        <span class="card-title">DP 小汇</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">SRM 679 FiringEmployees
+有一个 n 个点的树, 每个点有点权 (点权可能为负), 求包含点 1 的最大权连通子图 (的权值和)。<span class="mjpage"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="9.143ex" height="2.343ex" style="vertical-align: -0.505ex;" viewBox="0 -791.3 3936.6 1008.6" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<path stroke-width="1" id="E5-MJMATHI-6E" d="M21 287Q22 293 24 303T36 341T56 388T89 425T135 442Q171 442 195 424T225 390T231 369Q231 367 232 367L243 378Q304 442 382 442Q436 442 469 415T503 336T465 179T427 52Q427 26 444 26Q450 26 453 27Q482 32 505 65T540 145Q542 153 560 153Q580 153 580 145Q580 144 576 130Q568 101 554 73T508 17T439 -10Q392 -10 371 17T350 73Q350 92 386 193T423 345Q423 404 379 404H374Q288 404 229 303L222 291L189 157Q156 26 151 16Q138 -11 108 -11Q95 -11 87 -5T76 7T74 17Q74 30 112 180T152 343Q153 348 153 366Q153 405 129 405Q91 405 66 305Q60 285 60 284Q58 278 41 278H27Q21 284 21 287Z"></path>
+<path stroke-width="1" id="E5-MJMAIN-2264" d="M674 636Q682 636 688 630T694 615T687 601Q686 600 417 472L151 346L399 228Q687 92 691 87Q694 81 694 76Q694 58 676 56H670L382 192Q92 329 90 331Q83 336 83 348Q84 359 96 365Q104 369 382 500T665 634Q669 636 674 636ZM84 -118Q84 -108 99 -98H678Q694 -104 694 -118Q694 -130 679 -138H98Q84 -131 84 -118Z"></path>
+<path stroke-width="1" id="E5-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path>
+<path stroke-width="1" id="E5-MJMAIN-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path>
+<path stroke-width="1" id="E5-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path>
+</defs>
+<g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+ <use xlink:href="#E5-MJMATHI-6E" x="0" y="0"></use>
+ <use xlink:href="#E5-MJMAIN-2264" x="878" y="0"></use>
+<g transform="translate(1934,0)">
+ <use xlink:href="#E5-MJMAIN-32"></use>
+ <use xlink:href="#E5-MJMAIN-35" x="500" y="0"></use>
+ <use xlink:href="#E5-MJMAIN-30" x="1001" y="0"></use>
+ <use xlink:href="#E5-MJMAIN-30" x="1501" y="0"></use>
+</g>
+</g>
+</svg></span>
+
+入门树形 DP，<span class="mjpage"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="3.375ex" height="2.843ex" style="vertical-align: -0.838ex;" viewBox="0 -863.1 1453 1223.9" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<path stroke-width="1" id="E6-MJMATHI-66" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path>
+<path stroke-width="1" id="E6-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path>
+<path stroke-width="1" id="E6-MJMATHI-69" d="M184 600Q184 624 203 642T247 661Q265 661 277 649T290 619Q290 596 270 577T226 557Q211 557 198 567T184 600ZM21 287Q21 295 30 318T54 369T98 420T158 442Q197 442 223 419T250 357Q250 340 236 301T196 196T154 83Q149 61 149 51Q149 26 166 26Q175 26 185 29T208 43T235 78T260 137Q263 149 265 151T282 153Q302 153 302 143Q302 135 293 112T268 61T223 11T161 -11Q129 -11 102 10T74 74Q74 91 79 106T122 220Q160 321 166 341T173 380Q173 404 156 404H154Q124 404 99 371T61 287Q60 286 59 284T58 281T56 279T53 278T49 278T41 278H27Q21 284 21 287Z"></path>
+<path stroke-width="1" id="E6-MJMAIN-5D" d="M22 710V750H159V-250H22V-210H119V710H22Z"></path>
+</defs>
+<g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+ <use xlink:href="#E6-MJMATHI-66" x="0" y="0"></use>
+ <use xlink:href="#E6-MJMAIN-5B" x="550" y="0"></use>
+ <use xlink:href="#E6-MJMATHI-69" x="829" y="0"></use>
+ <use xlink:href="#E6-MJMAIN-5D" x="1174" y="0"></use>
+</g>
+</svg></span> 表示以 i 为根的子树 $su</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018.10.05
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/动态规划/" class="post-category" target="_blank">
+                                    动态规划
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/DP/" target="_blank">
+                        <span class="chip bg-color">DP</span>
+                    </a>
+                    
+                    <a href="/tags/ZROI/" target="_blank">
+                        <span class="chip bg-color">ZROI</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h1, h2, h3, h4, h5, h6'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4, h5, h6').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        rml9 = function (){$mainContent.removeClass('l9');}
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+            	$tocAside.removeClass(expandedClass).slideUp(0,rml9);
+            } else {
+                $tocAside.addClass(expandedClass).slideDown();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由©<a href="https://sshwy.tk/" target="_blank">Sshwy</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+
+            
+			
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+            
+
+
+    <a href="mailto:jy.cat@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=1272918035" class="tooltipped" data-tooltip="QQ联系我: 1272918035" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+
+        </div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+<script src="/js/crypt.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-146805234-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-146805234-1');
+</script>
+
+
+
+
+
+
+
+</body></html>

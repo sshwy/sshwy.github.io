@@ -1,0 +1,1075 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Aria2 使用指北, Oier, Algorithm, Blog, sshwy, hwy, yaoyao">
+    <meta name="description" content="摘要
+aria2 对于普通用户可能并没有那么友好，不过在进行配置后，它将是真正的开源免费下载利器！对于那些不了解 aria2 的同学，笔者就本文章介绍一下 aria2 在 linux 下的使用
+
+被遗弃的 Windows？aria2 并不是">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Aria2 使用指北 | Sshwy's Blog</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<style type="text/css">
+    
+</style>
+
+
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.svg" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Sshwy's Blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.svg" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Sshwy's Blog</div>
+        <div class="logo-desc">
+            
+            辗转当作浮生妖，流离惊似尘世鬼
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/sshwy" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+    .github-corner .octo-arm {
+        animation: none;
+    }
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/sshwy" class="github-corner tooltipped hide-on-med-and-down" target="_blank" data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+
+        
+    </nav>
+
+</header>
+
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        Aria2 使用指北
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Others/" class="post-category" target="_blank">
+                                Others
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2019-04-13
+                </div>
+
+                
+				
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p><strong>摘要</strong></p>
+<p>aria2 对于普通用户可能并没有那么友好，不过在进行配置后，它将是真正的开源免费下载利器！对于那些不了解 aria2 的同学，笔者就本文章介绍一下 aria2 在 linux 下的使用</p>
+<a id="more"></a>
+<h1 id="被遗弃的-Windows？"><a href="#被遗弃的-Windows？" class="headerlink" title="被遗弃的 Windows？"></a>被遗弃的 Windows？</h1><p>aria2 并不是 linux 专属，只不过关于 windows 的配置教程较多，并且那些教程通常都是包含 aria2 图形界面的配置，容易上手。而在 linux 这个方面，由于默认了大多数 linux 是习惯使用命令行的，因此对于图形界面的配置教程相对较少。于是就有了这篇文章</p>
+<h1 id="Aria2-命令行与-GUI"><a href="#Aria2-命令行与-GUI" class="headerlink" title="Aria2 命令行与 GUI"></a>Aria2 命令行与 GUI</h1><p>首先，下载一个 aria2 命令行界面是很有必要的。一方面，使用 linux 系统的用户或多或少都会接触命令的运行，再者，使用命令行界面相比图形界面有更高的定制化空间，也可以提高效率；其次，任何软件的图形界面本质上就是在运行一系列的命令，因此装一个命令行界面也是理所当然的事情</p>
+<h2 id="Ubuntu"><a href="#Ubuntu" class="headerlink" title="Ubuntu"></a>Ubuntu</h2><p>直接从源里添加</p>
+<pre><code>sudo apt-get install aria2
+</code></pre><p>还有一个图形界面的软件，见 Manjaro 的部分</p>
+<h2 id="Manjaro-Arch"><a href="#Manjaro-Arch" class="headerlink" title="Manjaro/Arch"></a>Manjaro/Arch</h2><p>当然是我大 pacman，这个估计大家都会的，毕竟选择 Arch 系列的都是能折腾的人</p>
+<p>不过笔者使用 yaourt 又多安装了一个软件，用于图形界面</p>
+<pre><code>[sshwy@sshwy-pc ~]$ yaourt aria2
+1 community/aria2 1.34.0-2
+    Download utility that supports HTTP(S), FTP, BitTorrent, and Metalink
+2 archlinuxcn/aria2-fast 1.34.0-2
+    Aria2 Download utility with little patch to maximize aria2 download speed
+3 archlinuxcn/ariang-allinone 1.0.2-3
+    AriaNg, a modern web frontend making aria2 easier to use. (all-in-one version)
+curl error: URL using bad/illegal format or missing URL
+==&gt; 输入 n° 以安装需要的软件包（例如：1 2 3 或者是 1-3）
+==&gt; ---------------------------------
+==&gt;
+</code></pre><p>我们选择 2 和 3 安装，毕竟人家都写了一个 fast 嘛。ubuntu 同理。不过不得不说，ubuntu 的软件源实在难用，这也是笔者从 deepin 切换到 Manjaro deepin 的原因</p>
+<h2 id="命令行的使用"><a href="#命令行的使用" class="headerlink" title="命令行的使用"></a>命令行的使用</h2><p>笔者只提醒一点，这个命令的名字不是 aria2，是 aria2c。其余的自己百度吧</p>
+<h1 id="图形界面的配置"><a href="#图形界面的配置" class="headerlink" title="图形界面的配置"></a>图形界面的配置</h1><p>对于喜欢倒腾的小伙伴估计尝试过运行 ariang-allinone 了。命令行输入该命令后，会在浏览器里弹出一个标签页，也就是漂亮的图形界面啦</p>
+<p><img src="https://hexo-source-1257756441.cos.ap-chengdu.myqcloud.com/2019/04/13/2322.png" alt="pic"></p>
+<p>不过注意到，Aria2 的状态是未连接。为什么？是因为我们并没有启动 aria2 命令行的端口监听。</p>
+<h2 id="Aria2-配置文件"><a href="#Aria2-配置文件" class="headerlink" title="Aria2 配置文件"></a>Aria2 配置文件</h2><p>首先我们创建 aria2 的配置文件，在 <code>/etc/</code> 新建目录 <code>aria2/</code>，并建立 <code>aria2.conf</code> 和 <code>aria2.session</code> 文件</p>
+<pre class=" language-lang-bash"><code class="language-lang-bash"><span class="token function">sudo</span> <span class="token function">mkdir</span> /etc/aria2/
+<span class="token function">sudo</span> <span class="token function">touch</span> /etc/aria2/aria2.conf
+<span class="token function">sudo</span> <span class="token function">touch</span> /etc/aria2/aria2.session
+<span class="token function">sudo</span> <span class="token function">chmod</span> 777 /etc/aria2/aria2.session
+</code></pre>
+<p>然后编辑 <code>aria2.conf</code> 文件，加入以下配置，当然是可以在此配置的基础上自定义的</p>
+<pre class=" language-lang-bash"><code class="language-lang-bash">dir<span class="token operator">=</span>/home/zz/
+disable-ipv6<span class="token operator">=</span>true
+<span class="token comment" spellcheck="true">#断点续传</span>
+continue<span class="token operator">=</span>true
+input-file<span class="token operator">=</span>/etc/aria2/aria2.session
+save-session<span class="token operator">=</span>/etc/aria2/aria2.session
+<span class="token comment" spellcheck="true"># 启用磁盘缓存，0 为禁用缓存，需 1.16 以上版本，默认：16M</span>
+disk-cache<span class="token operator">=</span>32M
+<span class="token comment" spellcheck="true"># 文件预分配方式，能有效降低磁盘碎片，默认：prealloc</span>
+<span class="token comment" spellcheck="true"># 预分配所需时间：none &lt; falloc ? trunc &lt; prealloc</span>
+<span class="token comment" spellcheck="true"># falloc 和 trunc 则需要文件系统和内核支持，NTFS 建议使用 falloc, EXT3/4 建议 trunc</span>
+file-allocation<span class="token operator">=</span>trunc
+<span class="token comment" spellcheck="true"># 断点续传</span>
+continue<span class="token operator">=</span>true
+<span class="token comment" spellcheck="true"># 最大同时下载任务数，运行时可修改，默认：5</span>
+max-concurrent-downloads<span class="token operator">=</span>5
+<span class="token comment" spellcheck="true"># 同一服务器连接数，添加时可指定，默认：1</span>
+max-connection-per-server<span class="token operator">=</span>5
+<span class="token comment" spellcheck="true"># 最小文件分片大小，添加时可指定，取值范围 1M -1024M, 默认：20M</span>
+<span class="token comment" spellcheck="true"># 假定 size=10M, 文件为 20MiB 则使用两个来源下载；文件为 15MiB 则使用一个来源下载</span>
+min-split-size<span class="token operator">=</span>10M
+<span class="token comment" spellcheck="true"># 单个任务最大线程数，添加时可指定，默认：5</span>
+split<span class="token operator">=</span>64
+<span class="token comment" spellcheck="true"># 整体下载速度限制，运行时可修改，默认：0</span>
+<span class="token comment" spellcheck="true">#max-overall-download-limit=0</span>
+<span class="token comment" spellcheck="true"># 单个任务下载速度限制，默认：0</span>
+<span class="token comment" spellcheck="true">#max-download-limit=0</span>
+<span class="token comment" spellcheck="true"># 整体上传速度限制，运行时可修改，默认：0</span>
+<span class="token comment" spellcheck="true">#max-overall-upload-limit=0</span>
+<span class="token comment" spellcheck="true"># 单个任务上传速度限制，默认：0</span>
+<span class="token comment" spellcheck="true">#max-upload-limit=0</span>
+<span class="token comment" spellcheck="true"># 禁用 IPv6, 默认：false</span>
+disable-ipv6<span class="token operator">=</span>true
+<span class="token comment" spellcheck="true">## 进度保存相关 ##</span>
+<span class="token comment" spellcheck="true"># 从会话文件中读取下载任务</span>
+input-file<span class="token operator">=</span>aria2.session
+<span class="token comment" spellcheck="true"># 在 Aria2 退出时保存 ` 错误 / 未完成 ` 的下载任务到会话文件</span>
+save-session<span class="token operator">=</span>aria2.session
+<span class="token comment" spellcheck="true"># 定时保存会话，0 为退出时才保存，需 1.16.1 以上版本，默认：0</span>
+save-session-interval<span class="token operator">=</span>60
+<span class="token comment" spellcheck="true">## RPC 相关设置 ##</span>
+enable-rpc<span class="token operator">=</span>true
+<span class="token comment" spellcheck="true"># 允许所有来源，默认：false</span>
+rpc-allow-origin-all<span class="token operator">=</span>true
+<span class="token comment" spellcheck="true"># 允许非外部访问，默认：false</span>
+rpc-listen-all<span class="token operator">=</span>true
+<span class="token comment" spellcheck="true"># 事件轮询方式，取值：[epoll, kqueue, port, poll, select], 不同系统默认值不同</span>
+<span class="token comment" spellcheck="true">#event-poll=select</span>
+<span class="token comment" spellcheck="true"># RPC 监听端口，端口被占用时可以修改，默认：6800</span>
+<span class="token comment" spellcheck="true">#rpc-listen-port=6800</span>
+<span class="token comment" spellcheck="true">## BT/PT 下载相关 ##</span>
+<span class="token comment" spellcheck="true"># 当下载的是一个种子（以.torrent 结尾）时，自动开始 BT 任务，默认：true</span>
+<span class="token comment" spellcheck="true">#follow-torrent=true</span>
+<span class="token comment" spellcheck="true"># BT 监听端口，当端口被屏蔽时使用，默认：6881-6999</span>
+listen-port<span class="token operator">=</span>51413
+<span class="token comment" spellcheck="true"># 单个种子最大连接数，默认：55</span>
+<span class="token comment" spellcheck="true">#bt-max-peers=55</span>
+<span class="token comment" spellcheck="true"># 打开 DHT 功能，PT 需要禁用，默认：true</span>
+enable-dht<span class="token operator">=</span>false
+<span class="token comment" spellcheck="true"># 打开 IPv6 DHT 功能，PT 需要禁用</span>
+<span class="token comment" spellcheck="true">#enable-dht6=false</span>
+<span class="token comment" spellcheck="true"># DHT 网络监听端口，默认：6881-6999</span>
+<span class="token comment" spellcheck="true">#dht-listen-port=6881-6999</span>
+<span class="token comment" spellcheck="true"># 本地结点查找，PT 需要禁用，默认：false</span>
+<span class="token comment" spellcheck="true">#bt-enable-lpd=false</span>
+<span class="token comment" spellcheck="true"># 种子交换，PT 需要禁用，默认：true</span>
+enable-peer-exchange<span class="token operator">=</span>false
+<span class="token comment" spellcheck="true"># 每个种子限速，对少种的 PT 很有用，默认：50K</span>
+<span class="token comment" spellcheck="true">#bt-request-peer-speed-limit=50K</span>
+<span class="token comment" spellcheck="true"># 客户端伪装，PT 需要</span>
+peer-id-prefix<span class="token operator">=</span>-TR2770-
+user-agent<span class="token operator">=</span>Transmission/2.77
+<span class="token comment" spellcheck="true"># 当种子的分享率达到这个数时，自动停止做种，0 为一直做种，默认：1.0</span>
+seed-ratio<span class="token operator">=</span>0
+<span class="token comment" spellcheck="true"># 强制保存会话，话即使任务已经完成，默认：false</span>
+<span class="token comment" spellcheck="true"># 较新的版本开启后会在任务完成后依然保留.aria2 文件</span>
+<span class="token comment" spellcheck="true">#force-save=false</span>
+<span class="token comment" spellcheck="true"># BT 校验相关，默认：true</span>
+<span class="token comment" spellcheck="true">#bt-hash-check-seed=true</span>
+<span class="token comment" spellcheck="true"># 继续之前的 BT 任务时，无需再次校验，默认：false</span>
+bt-seed-unverified<span class="token operator">=</span>true
+<span class="token comment" spellcheck="true"># 保存磁力链接元数据为种子文件 (.torrent 文件）, 默认：false</span>
+bt-save-metadata<span class="token operator">=</span>true
+</code></pre>
+<h2 id="启动监听"><a href="#启动监听" class="headerlink" title="启动监听"></a>启动监听</h2><p>运行以下命令</p>
+<pre class=" language-lang-bash"><code class="language-lang-bash"><span class="token function">sudo</span> aria2c --conf-path<span class="token operator">=</span>/etc/aria2/aria2.conf
+</code></pre>
+<p>如果运行成功，就会输出正在监听 XX 端口（通常是 6800）</p>
+<p>如果跳出什么无法打开 <code>aria2.session</code> 的错误，就在当前运行命令的目录下建一个 <code>aria2.session</code> 文件。这是笔者遇到过的问题</p>
+<p>运行以后再打开图形界面，就会变成已连接啦。图形界面有中文，大部分参数有解释，是不是很良心～</p>
+<p>另外，这个 WebUI 与命令行是分开的，因此即使你关闭了 WebUI，只要不终止命令，那么下载将继续运行；你可以过一会儿重新启动 WebUI，仍可以看到正在下载的文件。（这个 WebUI 是一个 html 文件，甚至可以加到 chrome 的收藏里，从 chrome 启动，不用从命令行启动啦，不过 aria2 的监听仍然要通过命令启动，可以吧这个命令写到一个 sh 文件里，下次直接运行这个文件，就不用去背这么长的命令了）</p>
+<h1 id="Extra-P-站下载插画"><a href="#Extra-P-站下载插画" class="headerlink" title="Extra-P 站下载插画"></a>Extra-P 站下载插画</h1><p>由于 P 站设置了防倒链使得爬虫爬下来的链接用 aria2 下载会 403 报错，解决方法就是设置 referer 为 <code>http://www.pixiv.net</code>，在 HTTP 设置的请求来源选项里</p>
+
+            </div>
+            <hr>
+
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="https://sshwy.tk" class="b-link-green">Sshwy's Blog</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2019/04/53687/" class="b-link-green">Aria2 使用指北</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+    #vcomments input[type=text],
+    #vcomments input[type=email],
+    #vcomments input[type=url],
+    #vcomments textarea {
+        box-sizing: border-box;
+    }
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+    #vcomments a {
+        padding: 0 2px;
+        color: #42b983;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+    #vcomments table, th, td {
+        border: 0;
+    }
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+    #vcomments table td {
+        min-width: 80px;
+    }
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+    #vcomments dfn {
+        font-style: italic;
+    }
+    #vcomments small {
+        font-size: 85%;
+    }
+    #vcomments cite {
+        font-style: normal;
+    }
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+    #vcomments table td {
+        min-width: 80px;
+    }
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div id="vcomments" class="card-content"></div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: '6J18y6MnypkdE9NTJLAyBytY-MdYXbMMI',
+        appKey: 'PwP1bMVSCd423mdrEbOEmf46',
+        notify: 'true' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'false' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'Siyuan小姐姐/ZZH女装&amp;大佬AKIOI'
+    });
+</script>
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2019/04/24636/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Yay 使用小记">
+                        
+                        <span class="card-title">Yay 使用小记</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">摘要
+Yay——Yet another Yogurt.
+Yaourt 已死！
+
+概述作者入坑 linux 以来，从最开始的 Ubuntu，到国产的 Deepin，到现在的 Manjaro Deepin，在 linux 上也是折腾了很久。
+U</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2019.04.14
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Others/" class="post-category" target="_blank">
+                                    Others
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2019/04/48421/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="圆桌问题">
+                        
+                        <span class="card-title">圆桌问题</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">摘要
+复习 Dinic～
+
+
+假设有来自 m 个不同单位的代表参加一次国际会议。每个单位的代表数分别为 ri (i =1,2,……,m)。
+会议餐厅共有 n 张餐桌，每张餐桌可容纳 ci (i =1,2,……,n) 个代表就餐。
+为了使代表</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019.04.11
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/图论/" class="post-category" target="_blank">
+                                    图论
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h1, h2, h3, h4, h5, h6'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4, h5, h6').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        rml9 = function (){$mainContent.removeClass('l9');}
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+            	$tocAside.removeClass(expandedClass).slideUp(0,rml9);
+            } else {
+                $tocAside.addClass(expandedClass).slideDown();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由©<a href="https://sshwy.tk/" target="_blank">Sshwy</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+
+            
+			
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+            
+
+
+    <a href="mailto:jy.cat@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=1272918035" class="tooltipped" data-tooltip="QQ联系我: 1272918035" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+
+        </div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+<script src="/js/crypt.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-146805234-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-146805234-1');
+</script>
+
+
+
+
+
+
+
+</body></html>

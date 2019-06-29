@@ -1,0 +1,1274 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="VIM 学习日志, Oier, Algorithm, Blog, sshwy, hwy, yaoyao">
+    <meta name="description" content="摘要
+vim 大法好啊
+
+Vim 插件安装首先安装 Vundle，见 Vundle-Github.
+安装插件的时候，先在 vimrc 里面输入 Plugin &amp;#39;XXX&amp;#39; 并保存，然后 vim 里运行 PluginInstal">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>VIM 学习日志 | Sshwy's Blog</title>
+    <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<style type="text/css">
+    
+</style>
+
+
+
+    <script src="/libs/jquery/jquery-2.2.0.min.js"></script>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+
+
+<body>
+
+<header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.svg" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Sshwy's Blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/friends" class="waves-effect waves-light">
+            
+            <i class="fa fa-address-book"></i>
+            
+            <span>友情链接</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.svg" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Sshwy's Blog</div>
+        <div class="logo-desc">
+            
+            辗转当作浮生妖，流离惊似尘世鬼
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于
+            </a>
+        </li>
+        
+        <li>
+            <a href="/friends" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-address-book"></i>
+                
+                友情链接
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/sshwy" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+    .github-corner .octo-arm {
+        animation: none;
+    }
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/sshwy" class="github-corner tooltipped hide-on-med-and-down" target="_blank" data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+
+        
+    </nav>
+
+</header>
+
+
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        VIM 学习日志
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/VIM/" target="_blank">
+                                <span class="chip bg-color">VIM</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Others/" class="post-category" target="_blank">
+                                Others
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2018-11-08
+                </div>
+
+                
+				
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p><strong>摘要</strong></p>
+<p>vim 大法好啊</p>
+<a id="more"></a>
+<h1 id="Vim-插件安装"><a href="#Vim-插件安装" class="headerlink" title="Vim 插件安装"></a>Vim 插件安装</h1><p>首先安装 Vundle，见 <a href="https://github.com/VundleVim/Vundle.vim" target="_blank" rel="noopener">Vundle-Github</a>.</p>
+<p>安装插件的时候，先在 vimrc 里面输入 <code>Plugin 'XXX'</code> 并保存，然后 vim 里运行 <code>PluginInstall</code> 即可</p>
+<h1 id="Vim-代码折叠"><a href="#Vim-代码折叠" class="headerlink" title="Vim 代码折叠"></a>Vim 代码折叠</h1><p>VIM 代码折叠方式可以用 “foldmethod” 选项来设置，如：<code>set foldmethod=indent</code></p>
+<p>有 6 种方式来折叠代码</p>
+<ol>
+<li>manual // 手工定义折叠</li>
+<li>indent // 用缩进表示折叠</li>
+<li>expr　 // 用表达式来定义折叠</li>
+<li>syntax // 用语法高亮来定义折叠</li>
+<li>diff   // 对没有更改的文本进行折叠</li>
+<li>marker // 用标志折叠</li>
+</ol>
+<p>常用命令：</p>
+<ol>
+<li>zc 折叠</li>
+<li>zC 对所在范围内所有嵌套的折叠点进行折叠</li>
+<li>zo 展开折叠</li>
+<li>zO 对所在范围内所有嵌套的折叠点展开</li>
+</ol>
+<h1 id="VIM-配置文件"><a href="#VIM-配置文件" class="headerlink" title="VIM 配置文件"></a>VIM 配置文件</h1><p>基础的配置</p>
+<pre class=" language-lang-bash"><code class="language-lang-bash"><span class="token keyword">set</span> nocp <span class="token string">" 不兼容模式
+set nu
+set cindent
+set autoindent
+set smartindent
+set tabstop=4 "</span> Tab 宽度为 4 个字符
+<span class="token keyword">set</span> shiftwidth<span class="token operator">=</span>4 <span class="token string">" 自动缩进的时候，缩进尺寸为 4 个空格
+set backspace=indent,eol,start
+set foldmethod=syntax
+set foldlevel=99
+set encoding=utf-8
+set ambiwidth=double
+"</span><span class="token keyword">set</span> whichwrap+<span class="token operator">=</span>b,s,h,l,<span class="token operator">&lt;</span>,<span class="token operator">&gt;</span>,<span class="token punctuation">[</span>,<span class="token punctuation">]</span>
+<span class="token keyword">set</span> et  <span class="token string">" 编辑时将所有 Tab 替换为空格
+set smarttab
+"</span><span class="token keyword">set</span> lbr
+<span class="token keyword">set</span> fo+<span class="token operator">=</span>mB
+<span class="token keyword">set</span> selection<span class="token operator">=</span>inclusive
+<span class="token keyword">set</span> wildmenu
+<span class="token keyword">set</span> fileencodings<span class="token operator">=</span>ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+
+imap jj <span class="token operator">&lt;</span>ESC<span class="token operator">&gt;</span>
+imap <span class="token operator">&lt;</span>C-t<span class="token operator">&gt;</span><span class="token operator">&lt;</span>C-t<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>C-R<span class="token operator">&gt;=</span>strftime<span class="token punctuation">(</span><span class="token string">"%Y-%m-%d %H:%M:%S"</span><span class="token punctuation">)</span><span class="token operator">&lt;</span>CR<span class="token operator">&gt;</span>
+nmap <span class="token operator">&lt;</span>F5<span class="token operator">&gt;</span> :<span class="token operator">!</span>clear<span class="token punctuation">;</span>g++ % -o %<span class="token operator">&lt;</span>-Wall <span class="token operator">&lt;</span>ESC<span class="token operator">&gt;</span>
+nmap <span class="token operator">&lt;</span>F6<span class="token operator">&gt;</span> :<span class="token operator">!</span>clear<span class="token punctuation">;</span><span class="token function">time</span> ./%<span class="token operator">&lt;&lt;</span>ESC<span class="token operator">&gt;</span>
+nmap <span class="token operator">&lt;</span>F7<span class="token operator">&gt;</span> :<span class="token operator">!</span>clear<span class="token punctuation">;</span><span class="token function">time</span> ./%<span class="token operator">&lt;&lt;</span>%<span class="token operator">&lt;</span>.in <span class="token operator">&lt;</span>ESC<span class="token operator">&gt;</span>
+nmap <span class="token operator">&lt;</span>F8<span class="token operator">&gt;</span> :vsp %<span class="token operator">&lt;</span>.in <span class="token operator">&lt;</span>ESC<span class="token operator">&gt;</span>
+nmap <span class="token operator">&lt;</span>F9<span class="token operator">&gt;</span> :<span class="token operator">!</span>clear<span class="token punctuation">;</span>gedit % <span class="token operator">&lt;</span>ESC<span class="token operator">&gt;</span>
+nmap <span class="token operator">&lt;</span>C-g<span class="token operator">&gt;</span> gg<span class="token string">"+yG &lt;ESC&gt;
+nmap df za
+vmap &lt;C-c&gt; "</span>+y <span class="token operator">&lt;</span>ESC<span class="token operator">&gt;</span>
+
+<span class="token keyword">set</span> shell<span class="token operator">=</span>/bin/zsh
+au BufRead,BufNewFile *.ejs <span class="token keyword">set</span> filetype<span class="token operator">=</span>html " 文件类型映射
+</code></pre>
+<p>插件配置</p>
+<pre class=" language-lang-bash"><code class="language-lang-bash"><span class="token string">"Vundle
+
+set nocompatible              "</span> be iMproved, required
+filetype off                  <span class="token string">"required"</span> <span class="token keyword">set</span> the runtime path to include Vundle and initialize
+<span class="token keyword">set</span> rtp+<span class="token operator">=</span>/home/sshwy/.vim/bundle/Vundle.vim
+call vundle<span class="token comment" spellcheck="true">#begin()</span>
+<span class="token string">"alternatively, pass a path where Vundle should install plugins"</span>call vundle<span class="token comment" spellcheck="true">#begin('~/some/path/here')</span>
+
+<span class="token string">" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+"</span>The following are examples of different formats supported.<span class="token string">" Keep Plugin commands between vundle#begin/end.
+"</span> plugin on GitHub repo
+Plugin <span class="token string">'tpope/vim-fugitive'</span>
+<span class="token string">"plugin from http://vim-scripts.org/vim/scripts.html"</span> Plugin <span class="token string">'L9'</span>
+<span class="token string">" Git plugin not hosted on GitHub
+Plugin 'git://git.wincent.com/command-t.git'
+"</span> <span class="token function">git</span> repos on your local machine <span class="token punctuation">(</span>i.e. when working on your own plugin<span class="token punctuation">)</span>
+Plugin <span class="token string">'hotoo/pangu.vim'</span>
+<span class="token string">"The sparkup vim script is in a subdirectory of this repo called vim."</span> Pass the path to <span class="token keyword">set</span> the runtimepath properly.
+Plugin <span class="token string">'rstacruz/sparkup'</span>, <span class="token punctuation">{</span><span class="token string">'rtp'</span><span class="token keyword">:</span> <span class="token string">'vim/'</span><span class="token punctuation">}</span>
+<span class="token string">"Install L9 and avoid a Naming conflict if you've already installed a
+"</span>different version somewhere else.<span class="token string">" Plugin 'ascenator/L9', {'name': 'newL9'}
+
+"</span> Python 缩进插件
+Plugin <span class="token string">'vim-scripts/indentpython.vim'</span>
+<span class="token string">" 自动格式化插件，快捷键 F10
+Plugin 'Chiel92/vim-autoformat'
+nnoremap &lt;F10&gt; :Autoformat&lt;CR&gt;
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+let g:autoformat_remove_trailing_spaces = 0
+
+"</span> vim 文件树，F3 启动
+Plugin <span class="token string">'https://github.com/scrooloose/nerdtree'</span>
+nnoremap <span class="token operator">&lt;</span>F3<span class="token operator">&gt;</span> :NERDTreeToggle<span class="token operator">&lt;</span>CR<span class="token operator">&gt;</span>
+autocmd bufenter * <span class="token keyword">if</span> <span class="token punctuation">(</span>winnr<span class="token punctuation">(</span><span class="token string">"$"</span><span class="token punctuation">)</span> <span class="token operator">==</span> 1 <span class="token operator">&amp;&amp;</span> exists<span class="token punctuation">(</span><span class="token string">"b:NERDTree"</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> b:NERDTree.isTabTree<span class="token punctuation">(</span><span class="token punctuation">))</span> <span class="token operator">|</span> q <span class="token operator">|</span> endif
+
+<span class="token string">" vim 增强状态栏
+Plugin 'https://github.com/bling/vim-airline'
+
+"</span> 五颜六色的括号
+Plugin <span class="token string">'kien/rainbow_parentheses.vim'</span>
+<span class="token keyword">let</span> g:rbpt_colorpairs <span class="token operator">=</span> <span class="token punctuation">[</span>\ <span class="token punctuation">[</span><span class="token string">'brown'</span>,       <span class="token string">'RoyalBlue3'</span><span class="token punctuation">]</span>,
+                        \ <span class="token punctuation">[</span><span class="token string">'Darkblue'</span>,    <span class="token string">'SeaGreen3'</span><span class="token punctuation">]</span>,
+                        \ <span class="token punctuation">[</span><span class="token string">'darkgray'</span>,    <span class="token string">'DarkOrchid3'</span><span class="token punctuation">]</span>,
+                        \ <span class="token punctuation">[</span><span class="token string">'darkgreen'</span>,   <span class="token string">'firebrick3'</span><span class="token punctuation">]</span>,
+                        \ <span class="token punctuation">[</span><span class="token string">'darkcyan'</span>,    <span class="token string">'RoyalBlue3'</span><span class="token punctuation">]</span>,
+                        \ <span class="token punctuation">[</span><span class="token string">'darkred'</span>,     <span class="token string">'SeaGreen3'</span><span class="token punctuation">]</span>,
+                        \ <span class="token punctuation">[</span><span class="token string">'darkmagenta'</span>, <span class="token string">'DarkOrchid3'</span><span class="token punctuation">]</span>,
+                        \ <span class="token punctuation">[</span><span class="token string">'brown'</span>,       <span class="token string">'firebrick3'</span><span class="token punctuation">]</span>,
+                        \ <span class="token punctuation">[</span><span class="token string">'gray'</span>,        <span class="token string">'RoyalBlue3'</span><span class="token punctuation">]</span>,
+                        \ <span class="token punctuation">[</span><span class="token string">'darkmagenta'</span>, <span class="token string">'DarkOrchid3'</span><span class="token punctuation">]</span>,
+                        \ <span class="token punctuation">[</span><span class="token string">'Darkblue'</span>,    <span class="token string">'firebrick3'</span><span class="token punctuation">]</span>,
+                        \ <span class="token punctuation">[</span><span class="token string">'red'</span>,         <span class="token string">'firebrick3'</span><span class="token punctuation">]</span>,
+                        \ <span class="token punctuation">[</span><span class="token string">'darkgreen'</span>,   <span class="token string">'RoyalBlue3'</span><span class="token punctuation">]</span>,
+                        \ <span class="token punctuation">[</span><span class="token string">'darkcyan'</span>,    <span class="token string">'SeaGreen3'</span><span class="token punctuation">]</span>,
+                        \ <span class="token punctuation">[</span><span class="token string">'darkred'</span>,     <span class="token string">'DarkOrchid3'</span><span class="token punctuation">]</span>,
+                        \ <span class="token punctuation">]</span>
+<span class="token keyword">let</span> g:rbpt_max <span class="token operator">=</span> 16
+<span class="token keyword">let</span> g:rbpt_loadcmd_toggle <span class="token operator">=</span> 0
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+" 代码语法检查
+Plugin <span class="token string">'w0rp/ale'</span>
+<span class="token keyword">function</span> s:run_ale<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">let</span> g:ale_fix_on_save <span class="token operator">=</span> 0
+    <span class="token keyword">let</span> g:ale_completion_enabled <span class="token operator">=</span> 1
+    <span class="token keyword">let</span> g:ale_sign_column_always <span class="token operator">=</span> 0
+    <span class="token keyword">let</span> g:airline<span class="token comment" spellcheck="true">#extensions#ale#enabled = 1</span>
+endfunction
+
+autocmd FileType php,python,c,java,shell,bash,vim,cpp call s:run_ale<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token string">" Vim Markdown
+Plugin 'KeitaNakamura/tex-conceal.vim' 
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+let g:vim_markdown_strikethrough = 1
+let g:tex_conceal='abdmg'
+let g:vim_markdown_math = 1
+let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_toc_autofit = 1
+nmap &lt;F4&gt; :Toc&lt;ESC&gt;
+
+set conceallevel=2
+
+Plugin 'Valloric/YouCompleteMe'
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+let g:ycm_autoclose_preview_window_after_completion = 1  "</span>补全后自动关闭 preview<span class="token string">" All of your Plugins must be added before the following line
+call vundle#end()            "</span> required
+filetype plugin indent on    <span class="token string">"required"</span> To ignore plugin indent changes, instead use:
+<span class="token string">"filetype plugin on"</span>
+<span class="token string">"Brief help"</span> :PluginList       - lists configured plugins
+<span class="token string">":PluginInstall    - installs plugins; append <span class="token variable"><span class="token variable">`</span><span class="token operator">!</span><span class="token variable">`</span></span> to update or just :PluginUpdate"</span> :PluginSearch foo - searches <span class="token keyword">for</span> foo<span class="token punctuation">;</span> append <span class="token variable"><span class="token variable">`</span><span class="token operator">!</span><span class="token variable">`</span></span> to refresh local cache
+<span class="token string">":PluginClean      - confirms removal of unused plugins; append <span class="token variable"><span class="token variable">`</span><span class="token operator">!</span><span class="token variable">`</span></span> to auto-approve removal"</span>
+<span class="token string">"see :h vundle for more details or wiki for FAQ"</span> Put your non-Plugin stuff after this line
+
+<span class="token string">"说明，以下代码是用于修改插入模式的光标为竖线，普通模式下为方块状"</span> 这主要是因为想保留普通终端下的方块输入形状。
+<span class="token string">"if has("</span>autocmd<span class="token string">")"</span>  au VimEnter,InsertLeave * silent execute <span class="token string">'!echo -ne"\e[1 q"'</span><span class="token operator">|</span> redraw<span class="token operator">!</span><span class="token string">"  au InsertEnter,InsertChange *
+"</span>\ <span class="token keyword">if</span> v:insertmode <span class="token operator">==</span><span class="token string">'i'</span><span class="token operator">|</span><span class="token string">"    \   silent execute '!echo -ne"</span>\e<span class="token punctuation">[</span>5 q<span class="token string">"'| redraw! |"</span>    \ elseif v:insertmode <span class="token operator">==</span> <span class="token string">'r'</span> <span class="token operator">|</span>
+<span class="token string">"\   silent execute'!echo -ne "</span>\e<span class="token punctuation">[</span>3 q<span class="token string">"' | redraw! |
+"</span>\ endif<span class="token string">"  au VimLeave * silent execute '!echo -ne"</span>\e<span class="token punctuation">[</span> q<span class="token string">"'| redraw!"</span>endif
+</code></pre>
+<p>以下为旧原文*</p>
+<hr>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="Windows"><a href="#Windows" class="headerlink" title="Windows"></a>Windows</h2><p><a href="https://www.vim.org/" target="_blank" rel="noopener">vim- 官方网址</a><br><a href="ftp://ftp.vim.org/pub/vim/pc/gvim80-586.exe" target="_blank" rel="noopener">windows 稳定版 - 直接下载</a></p>
+<h2 id="linux"><a href="#linux" class="headerlink" title="linux"></a>linux</h2><pre><code>sudo apt install vim
+</code></pre><p>或</p>
+<pre><code>yay -S vim
+</code></pre><h1 id="初级-LEVEL0"><a href="#初级-LEVEL0" class="headerlink" title="初级 LEVEL0"></a>初级 LEVEL0</h1><p><code>:help &lt;command&gt;</code> | 显示相关命令的帮助。你也可以就输入 <code>:help</code> 而不跟命令。（退出帮助需要输入 <code>:q</code>）<br><code>:cd</code> | 修改当前操作目录<br><code>:new</code> | 新建文件。新建后，记得使用：w 保存，否则直接关闭不会产生文件；<br><code>:wq</code> | 存盘 + 退出 (<code>:w</code> 存盘，<code>:q</code> 退出）   （注：<code>:w</code> 后可以跟文件名）</p>
+<p><code>i</code> | Insert-Mode，此时可插入文本，按 <code>ESC</code> 回到 Normal 模式。<br><code>x</code> | 删当前光标所在的一个字符。<br><code>dd</code> | 删除当前行，并把删除的行存到剪贴板里<br><code>y</code> | 拷贝选中的文本<br><code>yy</code> | 拷贝当前行<br><code>p</code> | 粘贴剪贴板<br><code>d</code> | 删除选中的文本，并把删除的文本存到剪贴板里<br><code>dd</code> | 删除当前行，并把删除的行存到剪贴板里<br><code>h</code> <code>j</code> <code>k</code> <code>l</code> | 使用其移动光标，你也可以使用光标键 (←↓↑→). 注：<code>j</code> 就像下箭头。</p>
+<h1 id="启动-LEVEL1"><a href="#启动-LEVEL1" class="headerlink" title="启动 LEVEL1"></a>启动 LEVEL1</h1><p><code>w</code> | 到下一个单词的开头。<br><code>e</code> | 到下一个单词的结尾。<br><code>%</code> | 匹配括号移动，包括 (, {, [. （陈皓注：你需要把光标先移到括号上）<br><code>*</code> <code>#</code> | 匹配光标当前所在的单词，移动光标到下一个（或上一个）匹配单词（*是下一个，# 是上一个）</p>
+<p><code>.</code> | （小数点） 可以重复上一次的命令<br><code>N&lt;command&gt;</code> | 重复某个命令 N 次<br><code>NG</code> <code>:N</code> | 到第 N 行（G 大写）<br><code>v</code> | 可视化的选择</p>
+<h1 id="进阶-LEVEL2"><a href="#进阶-LEVEL2" class="headerlink" title="进阶 LEVEL2"></a>进阶 LEVEL2</h1><p><strong>记住光标的移动，很多命令都可以和这些移动光标的命令连动。</strong><br><code>&lt;start position&gt;&lt;command&gt;&lt;end position&gt;</code></p>
+<ul>
+<li>例如 <code>0y$</code> 命令意味着：<br>  i. <code>0</code> | 先到行头<br>  i. <code>y</code> | 从这里开始拷贝<br>  i. <code>$</code> | 拷贝到本行最后一个字符</li>
+<li>你可可以输入 <code>ye</code>，从当前位置拷贝到本单词的最后一个字符。</li>
+<li>你也可以输入 <code>y2/foo</code> 来拷贝 2 个 “foo” 之间的字符串。</li>
+</ul>
+<h1 id="光速-LEVEL3"><a href="#光速-LEVEL3" class="headerlink" title="光速 LEVEL3"></a>光速 LEVEL3</h1><h2 id="在当前行上移动光标"><a href="#在当前行上移动光标" class="headerlink" title="在当前行上移动光标"></a>在当前行上移动光标</h2><p><code>0</code> | 到行头<br><code>^</code> | 到本行的第一个非 blank 字符<br><code>$</code> | 到行尾<br><code>g_</code> | 到本行最后一个不是 blank 字符的位置<br><code>fa</code> | 到下一个为 a 的字符处，你也可以 fs 到下一个为 s 的字符<br><code>t,</code> | 到逗号前的第一个字符。逗号可以变成其它字符<br><code>Nfa</code> | 在当前行查找第 N 个出现的 a<br><code>F</code> <code>T</code> | 和 <code>f</code> | <code>t</code> 一样，只不过是相反方向<br><code>dt"</code> | 删除所有的内容，直到遇到双引号——“</p>
+<h2 id="区域选择-lt-action-gt-a-lt-object-gt-或-lt-action-gt-i-lt-object-gt"><a href="#区域选择-lt-action-gt-a-lt-object-gt-或-lt-action-gt-i-lt-object-gt" class="headerlink" title="区域选择 <action>a<object> 或 <action>i<object>"></a>区域选择 <code>&lt;action&gt;a&lt;object&gt;</code> 或 <code>&lt;action&gt;i&lt;object&gt;</code></h2><p>在<strong>visual</strong>模式下，这些命令很强大，其命令格式为<br><code>&lt;action&gt;a&lt;object&gt;</code> 和 <code>&lt;action&gt;i&lt;object&gt;</code></p>
+<p><code>&lt;action&gt;</code> 可以是任何的命令，如 <code>d</code> （删除）, <code>y</code> （拷贝）, <code>v</code> （可以视模式选择）。<br><code>&lt;object&gt;</code> 可能是：</p>
+<ul>
+<li><code>w</code> 一个单词</li>
+<li><code>W</code> 一个以空格为分隔的单词</li>
+<li><code>s</code> 一个句字</li>
+<li><code>p</code> 一个段落。</li>
+<li>也可以是一个特别的字符：”、’、 )、 }、 ]。</li>
+</ul>
+<p>假设你有一个字符串 (map (+) (“foo”)). 而光标键在第一个 o 的位置。</p>
+<ul>
+<li><code>vi"</code> | 会选择 foo.</li>
+<li><code>va"</code> | 会选择”foo”.</li>
+<li><code>vi)</code> | 会选择 “foo”.</li>
+<li><code>va)</code> | 会选择 (“foo”).</li>
+<li><code>v2i)</code> | 会选择 map (+) (“foo”)</li>
+<li><code>v2a)</code> | 会选择 (map (+) (“foo”))</li>
+</ul>
+<h1 id="神犇-LEVEL4"><a href="#神犇-LEVEL4" class="headerlink" title="神犇 LEVEL4"></a>神犇 LEVEL4</h1><h2 id="块操作："><a href="#块操作：" class="headerlink" title="块操作："></a>块操作：<c-v></c-v></h2><p>块操作，典型的操作：<code>0 &lt;C-v&gt; &lt;C-d&gt; I-- [ESC]</code></p>
+<ul>
+<li><code>^</code> | 到行头</li>
+<li><code>&lt;C-v&gt;</code> | 开始块操作</li>
+<li><code>&lt;C-d&gt;</code> | 向下移动 （你也可以使用 hjkl 来移动光标，或是使用 %，或是别的）</li>
+<li><code>I-- [ESC]</code> | I 是插入，插入 “—”，按 <code>ESC</code> 键来为每一行生效。</li>
+</ul>
+<p>在<strong>Windows</strong>下的 vim，你需要使用 <code>&lt;C-q&gt;</code> 而不是 <code>&lt;C-v&gt;</code> ，<code>&lt;C-v&gt;</code> 是拷贝剪贴板。</p>
+<p><code>&lt;C-n&gt;</code> 和 <code>&lt;C-p&gt;</code> | <strong>自动补全</strong><br>在<strong>Insert</strong>模式下，你可以输入一个词的开头，然后按 <c-p> 或是 <c-n>，自动补齐功能就出现了…</c-n></c-p></p>
+<h3 id="可视化选择-v-V-lt-C-v-gt"><a href="#可视化选择-v-V-lt-C-v-gt" class="headerlink" title="可视化选择 v,V,<C-v>"></a>可视化选择 <code>v,V,&lt;C-v&gt;</code></h3><p>前面，我们看到了 <c-v> 的示例 （在 Windows 下应该是 <c-q>），我们可以使用 v 和 V。一但被选好了，你可以做下面的事：</c-q></c-v></p>
+<p>J | 把所有的行连接起来（变成一行）<br><code>&lt;</code> <code>&gt;</code> | 左右缩进<br><code>=</code> | <strong>自动给缩进（相当强大）</strong></p>
+<p>在所有被选择的行后加上点东西：</p>
+<ul>
+<li><code>&lt;C-v&gt;</code></li>
+<li>选中相关的行 （可使用 <code>j</code> 或 <code>&lt;C-d&gt;</code> 或是 <code>/pattern</code> 或是 <code>%</code> 等……)</li>
+<li><code>$</code> 到行最后</li>
+<li>A, 输入字符串，按 ESC。</li>
+</ul>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a href="https://blog.csdn.net/sumword_/article/details/53011463" target="_blank" rel="noopener">https://blog.csdn.net/sumword_/article/details/53011463</a></p>
+
+            </div>
+            <hr>
+
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            <div class="reprint">
+                <p>
+                    <span class="reprint-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="https://sshwy.tk" class="b-link-green">Sshwy's Blog</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2018/11/38355/" class="b-link-green">VIM 学习日志</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+    #vcomments input[type=text],
+    #vcomments input[type=email],
+    #vcomments input[type=url],
+    #vcomments textarea {
+        box-sizing: border-box;
+    }
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+    #vcomments a {
+        padding: 0 2px;
+        color: #42b983;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+    #vcomments table, th, td {
+        border: 0;
+    }
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+    #vcomments table td {
+        min-width: 80px;
+    }
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+    #vcomments dfn {
+        font-style: italic;
+    }
+    #vcomments small {
+        font-size: 85%;
+    }
+    #vcomments cite {
+        font-style: normal;
+    }
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+    #vcomments table td {
+        min-width: 80px;
+    }
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div id="vcomments" class="card-content"></div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: '6J18y6MnypkdE9NTJLAyBytY-MdYXbMMI',
+        appKey: 'PwP1bMVSCd423mdrEbOEmf46',
+        notify: 'true' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'false' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'Siyuan小姐姐/ZZH女装&amp;大佬AKIOI'
+    });
+</script>
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2018/11/24178/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="[AHOI2001] 质数和分解">
+                        
+                        <span class="card-title">[AHOI2001] 质数和分解</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">分析完全背包模板
+
+#include&lt;cstdio&gt;
+#define FOR(a,b,c) for(int a=b;a&lt;=c;a++)
+using namespace std;
+const int N=201;
+bool bp[</div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018.11.08
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/动态规划/" class="post-category" target="_blank">
+                                    动态规划
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/题解/" target="_blank">
+                        <span class="chip bg-color">题解</span>
+                    </a>
+                    
+                    <a href="/tags/背包/" target="_blank">
+                        <span class="chip bg-color">背包</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2018/11/29897/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="[NOIP2005] 过河">
+                        
+                        <span class="card-title">[NOIP2005] 过河</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">考虑 <span class="mjpage"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="13.854ex" height="2.509ex" style="vertical-align: -0.671ex;" viewBox="0 -791.3 5964.8 1080.4" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<path stroke-width="1" id="E1-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path>
+<path stroke-width="1" id="E1-MJMAIN-2264" d="M674 636Q682 636 688 630T694 615T687 601Q686 600 417 472L151 346L399 228Q687 92 691 87Q694 81 694 76Q694 58 676 56H670L382 192Q92 329 90 331Q83 336 83 348Q84 359 96 365Q104 369 382 500T665 634Q669 636 674 636ZM84 -118Q84 -108 99 -98H678Q694 -104 694 -118Q694 -130 679 -138H98Q84 -131 84 -118Z"></path>
+<path stroke-width="1" id="E1-MJMATHI-53" d="M308 24Q367 24 416 76T466 197Q466 260 414 284Q308 311 278 321T236 341Q176 383 176 462Q176 523 208 573T273 648Q302 673 343 688T407 704H418H425Q521 704 564 640Q565 640 577 653T603 682T623 704Q624 704 627 704T632 705Q645 705 645 698T617 577T585 459T569 456Q549 456 549 465Q549 471 550 475Q550 478 551 494T553 520Q553 554 544 579T526 616T501 641Q465 662 419 662Q362 662 313 616T263 510Q263 480 278 458T319 427Q323 425 389 408T456 390Q490 379 522 342T554 242Q554 216 546 186Q541 164 528 137T492 78T426 18T332 -20Q320 -22 298 -22Q199 -22 144 33L134 44L106 13Q83 -14 78 -18T65 -22Q52 -22 52 -14Q52 -11 110 221Q112 227 130 227H143Q149 221 149 216Q149 214 148 207T144 186T142 153Q144 114 160 87T203 47T255 29T308 24Z"></path>
+<path stroke-width="1" id="E1-MJMAIN-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path>
+<path stroke-width="1" id="E1-MJMATHI-54" d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z"></path>
+<path stroke-width="1" id="E1-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path>
+</defs>
+<g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+ <use xlink:href="#E1-MJMAIN-31" x="0" y="0"></use>
+ <use xlink:href="#E1-MJMAIN-2264" x="778" y="0"></use>
+ <use xlink:href="#E1-MJMATHI-53" x="1834" y="0"></use>
+ <use xlink:href="#E1-MJMAIN-2C" x="2480" y="0"></use>
+ <use xlink:href="#E1-MJMATHI-54" x="2925" y="0"></use>
+ <use xlink:href="#E1-MJMAIN-2264" x="3907" y="0"></use>
+<g transform="translate(4963,0)">
+ <use xlink:href="#E1-MJMAIN-31"></use>
+ <use xlink:href="#E1-MJMAIN-30" x="500" y="0"></use>
+</g>
+</g>
+</svg></span>
+<span class="mjpage"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="38.816ex" height="2.843ex" style="vertical-align: -0.838ex;" viewBox="0 -863.1 16712.2 1223.9" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<path stroke-width="1" id="E2-MJMAIN-2200" d="M0 673Q0 684 7 689T20 694Q32 694 38 680T82 567L126 451H430L473 566Q483 593 494 622T512 668T519 685Q524 694 538 694Q556 692 556 674Q556 670 426 329T293 -15Q288 -22 278 -22T263 -15Q260 -11 131 328T0 673ZM414 410Q414 411 278 411T142 410L278 55L414 410Z"></path>
+<path stroke-width="1" id="E2-MJMATHI-53" d="M308 24Q367 24 416 76T466 197Q466 260 414 284Q308 311 278 321T236 341Q176 383 176 462Q176 523 208 573T273 648Q302 673 343 688T407 704H418H425Q521 704 564 640Q565 640 577 653T603 682T623 704Q624 704 627 704T632 705Q645 705 645 698T617 577T585 459T569 456Q549 456 549 465Q549 471 550 475Q550 478 551 494T553 520Q553 554 544 579T526 616T501 641Q465 662 419 662Q362 662 313 616T263 510Q263 480 278 458T319 427Q323 425 389 408T456 390Q490 379 522 342T554 242Q554 216 546 186Q541 164 528 137T492 78T426 18T332 -20Q320 -22 298 -22Q199 -22 144 33L134 44L106 13Q83 -14 78 -18T65 -22Q52 -22 52 -14Q52 -11 110 221Q112 227 130 227H143Q149 221 149 216Q149 214 148 207T144 186T142 153Q144 114 160 87T203 47T255 29T308 24Z"></path>
+<path stroke-width="1" id="E2-MJMAIN-2C" d="M78 35T78 60T94 103T137 121Q165 121 187 96T210 8Q210 -27 201 -60T180 -117T154 -158T130 -185T117 -194Q113 -194 104 -185T95 -172Q95 -168 106 -156T131 -126T157 -76T173 -3V9L172 8Q170 7 167 6T161 3T152 1T140 0Q113 0 96 17Z"></path>
+<path stroke-width="1" id="E2-MJMATHI-54" d="M40 437Q21 437 21 445Q21 450 37 501T71 602L88 651Q93 669 101 677H569H659Q691 677 697 676T704 667Q704 661 687 553T668 444Q668 437 649 437Q640 437 637 437T631 442L629 445Q629 451 635 490T641 551Q641 586 628 604T573 629Q568 630 515 631Q469 631 457 630T439 622Q438 621 368 343T298 60Q298 48 386 46Q418 46 427 45T436 36Q436 31 433 22Q429 4 424 1L422 0Q419 0 415 0Q410 0 363 1T228 2Q99 2 64 0H49Q43 6 43 9T45 27Q49 40 55 46H83H94Q174 46 189 55Q190 56 191 56Q196 59 201 76T241 233Q258 301 269 344Q339 619 339 625Q339 630 310 630H279Q212 630 191 624Q146 614 121 583T67 467Q60 445 57 441T43 437H40Z"></path>
+<path stroke-width="1" id="E2-MJMAIN-2203" d="M56 661T56 674T70 694H487Q497 686 500 679V15Q497 10 487 1L279 0H70Q56 7 56 20T70 40H460V327H84Q70 334 70 347T84 367H460V654H70Q56 661 56 674Z"></path>
+<path stroke-width="1" id="E2-MJMAIN-7C" d="M139 -249H137Q125 -249 119 -235V251L120 737Q130 750 139 750Q152 750 159 735V-235Q151 -249 141 -249H139Z"></path>
+<path stroke-width="1" id="E2-MJMATHI-4C" d="M228 637Q194 637 192 641Q191 643 191 649Q191 673 202 682Q204 683 217 683Q271 680 344 680Q485 680 506 683H518Q524 677 524 674T522 656Q517 641 513 637H475Q406 636 394 628Q387 624 380 600T313 336Q297 271 279 198T252 88L243 52Q243 48 252 48T311 46H328Q360 46 379 47T428 54T478 72T522 106T564 161Q580 191 594 228T611 270Q616 273 628 273H641Q647 264 647 262T627 203T583 83T557 9Q555 4 553 3T537 0T494 -1Q483 -1 418 -1T294 0H116Q32 0 32 10Q32 17 34 24Q39 43 44 45Q48 46 59 46H65Q92 46 125 49Q139 52 144 61Q147 65 216 339T285 628Q285 635 228 637Z"></path>
+<path stroke-width="1" id="E2-MJMATHI-43" d="M50 252Q50 367 117 473T286 641T490 704Q580 704 633 653Q642 643 648 636T656 626L657 623Q660 623 684 649Q691 655 699 663T715 679T725 690L740 705H746Q760 705 760 698Q760 694 728 561Q692 422 692 421Q690 416 687 415T669 413H653Q647 419 647 422Q647 423 648 429T650 449T651 481Q651 552 619 605T510 659Q484 659 454 652T382 628T299 572T226 479Q194 422 175 346T156 222Q156 108 232 58Q280 24 350 24Q441 24 512 92T606 240Q610 253 612 255T628 257Q648 257 648 248Q648 243 647 239Q618 132 523 55T319 -22Q206 -22 128 53T50 252Z"></path>
+<path stroke-width="1" id="E2-MJMATHI-4D" d="M289 629Q289 635 232 637Q208 637 201 638T194 648Q194 649 196 659Q197 662 198 666T199 671T201 676T203 679T207 681T212 683T220 683T232 684Q238 684 262 684T307 683Q386 683 398 683T414 678Q415 674 451 396L487 117L510 154Q534 190 574 254T662 394Q837 673 839 675Q840 676 842 678T846 681L852 683H948Q965 683 988 683T1017 684Q1051 684 1051 673Q1051 668 1048 656T1045 643Q1041 637 1008 637Q968 636 957 634T939 623Q936 618 867 340T797 59Q797 55 798 54T805 50T822 48T855 46H886Q892 37 892 35Q892 19 885 5Q880 0 869 0Q864 0 828 1T736 2Q675 2 644 2T609 1Q592 1 592 11Q592 13 594 25Q598 41 602 43T625 46Q652 46 685 49Q699 52 704 61Q706 65 742 207T813 490T848 631L654 322Q458 10 453 5Q451 4 449 3Q444 0 433 0Q418 0 415 7Q413 11 374 317L335 624L267 354Q200 88 200 79Q206 46 272 46H282Q288 41 289 37T286 19Q282 3 278 1Q274 0 267 0Q265 0 255 0T221 1T157 2Q127 2 95 1T58 0Q43 0 39 2T35 11Q35 13 38 25T43 40Q45 46 65 46Q135 46 154 86Q158 92 223 354T289 629Z"></path>
+<path stroke-width="1" id="E2-MJMAIN-28" d="M94 250Q94 319 104 381T127 488T164 576T202 643T244 695T277 729T302 750H315H319Q333 750 333 741Q333 738 316 720T275 667T226 581T184 443T167 250T184 58T225 -81T274 -167T316 -220T333 -241Q333 -250 318 -250H315H302L274 -226Q180 -141 137 -14T94 250Z"></path>
+<path stroke-width="1" id="E2-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path>
+<path stroke-width="1" id="E2-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path>
+<path stroke-width="1" id="E2-MJMAIN-22EF" d="M78 250Q78 274 95 292T138 310Q162 310 180 294T199 251Q199 226 182 208T139 190T96 207T78 250ZM525 250Q525 274 542 292T585 310Q609 310 627 294T646 251Q646 226 629 208T586 190T543 207T525 250ZM972 250Q972 274 989 292T1032 310Q1056 310 1074 294T1093 251Q1093 226 1076 208T1033 190T990 207T972 250Z"></path>
+<path stroke-width="1" id="E2-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path>
+<path stroke-width="1" id="E2-MJMAIN-29" d="M60 749L64 750Q69 750 74 750H86L114 726Q208 641 251 514T294 250Q294 182 284 119T261 12T224 -76T186 -143T145 -194T113 -227T90 -246Q87 -249 86 -250H74Q66 -250 63 -250T58 -247T55 -238Q56 -237 66 -225Q221 -64 221 250T66 725Q56 737 55 738Q55 746 60 749Z"></path>
+<path stroke-width="1" id="E2-MJMAIN-3D" d="M56 347Q56 360 70 367H707Q722 359 722 347Q722 336 708 328L390 327H72Q56 332 56 347ZM56 153Q56 168 72 173H708Q722 163 722 153Q722 140 707 133H70Q56 140 56 153Z"></path>
+<path stroke-width="1" id="E2-MJMAIN-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path>
+</defs>
+<g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+ <use xlink:href="#E2-MJMAIN-2200" x="0" y="0"></use>
+ <use xlink:href="#E2-MJMATHI-53" x="556" y="0"></use>
+ <use xlink:href="#E2-MJMAIN-2C" x="1202" y="0"></use>
+ <use xlink:href="#E2-MJMATHI-54" x="1647" y="0"></use>
+ <use xlink:href="#E2-MJMAIN-2C" x="2351" y="0"></use>
+ <use xlink:href="#E2-MJMAIN-2203" x="2796" y="0"></use>
+ <use xlink:href="#E2-MJMATHI-53" x="3353" y="0"></use>
+ <use xlink:href="#E2-MJMAIN-2C" x="3998" y="0"></use>
+ <use xlink:href="#E2-MJMATHI-54" x="4444" y="0"></use>
+ <use xlink:href="#E2-MJMAIN-7C" x="5148" y="0"></use>
+ <use xlink:href="#E2-MJMATHI-4C" x="5427" y="0"></use>
+ <use xlink:href="#E2-MJMATHI-43" x="6108" y="0"></use>
+ <use xlink:href="#E2-MJMATHI-4D" x="6869" y="0"></use>
+ <use xlink:href="#E2-MJMAIN-28" x="7920" y="0"></use>
+ <use xlink:href="#E2-MJMAIN-31" x="8310" y="0"></use>
+ <use xlink:href="#E2-MJMAIN-2C" x="8810" y="0"></use>
+ <use xlink:href="#E2-MJMAIN-32" x="9255" y="0"></use>
+ <use xlink:href="#E2-MJMAIN-2C" x="9756" y="0"></use>
+ <use xlink:href="#E2-MJMAIN-22EF" x="10201" y="0"></use>
+ <use xlink:href="#E2-MJMAIN-2C" x="11540" y="0"></use>
+<g transform="translate(11985,0)">
+ <use xlink:href="#E2-MJMAIN-31"></use>
+ <use xlink:href="#E2-MJMAIN-30" x="500" y="0"></use>
+</g>
+ <use xlink:href="#E2-MJMAIN-29" x="12986" y="0"></use>
+ <use xlink:href="#E2-MJMAIN-3D" x="13653" y="0"></use>
+<g transform="translate(14710,0)">
+ <use xlink:href="#E2-MJMAIN-32"></use>
+ <use xlink:href="#E2-MJMAIN-35" x="500" y="0"></use>
+ <use xlink:href="#E2-MJMAIN-32" x="1001" y="0"></use>
+ <use xlink:href="#E2-MJMAIN-30" x="1501" y="0"></use>
+</g>
+</g>
+</svg></span>
+因此对于两相邻点之间的距离可以对 <span class="mjpage"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="4.65ex" height="2.176ex" style="vertical-align: -0.338ex;" viewBox="0 -791.3 2002 936.9" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<path stroke-width="1" id="E3-MJMAIN-32" d="M109 429Q82 429 66 447T50 491Q50 562 103 614T235 666Q326 666 387 610T449 465Q449 422 429 383T381 315T301 241Q265 210 201 149L142 93L218 92Q375 92 385 97Q392 99 409 186V189H449V186Q448 183 436 95T421 3V0H50V19V31Q50 38 56 46T86 81Q115 113 136 137Q145 147 170 174T204 211T233 244T261 278T284 308T305 340T320 369T333 401T340 431T343 464Q343 527 309 573T212 619Q179 619 154 602T119 569T109 550Q109 549 114 549Q132 549 151 535T170 489Q170 464 154 447T109 429Z"></path>
+<path stroke-width="1" id="E3-MJMAIN-35" d="M164 157Q164 133 148 117T109 101H102Q148 22 224 22Q294 22 326 82Q345 115 345 210Q345 313 318 349Q292 382 260 382H254Q176 382 136 314Q132 307 129 306T114 304Q97 304 95 310Q93 314 93 485V614Q93 664 98 664Q100 666 102 666Q103 666 123 658T178 642T253 634Q324 634 389 662Q397 666 402 666Q410 666 410 648V635Q328 538 205 538Q174 538 149 544L139 546V374Q158 388 169 396T205 412T256 420Q337 420 393 355T449 201Q449 109 385 44T229 -22Q148 -22 99 32T50 154Q50 178 61 192T84 210T107 214Q132 214 148 197T164 157Z"></path>
+<path stroke-width="1" id="E3-MJMAIN-30" d="M96 585Q152 666 249 666Q297 666 345 640T423 548Q460 465 460 320Q460 165 417 83Q397 41 362 16T301 -15T250 -22Q224 -22 198 -16T137 16T82 83Q39 165 39 320Q39 494 96 585ZM321 597Q291 629 250 629Q208 629 178 597Q153 571 145 525T137 333Q137 175 145 125T181 46Q209 16 250 16Q290 16 318 46Q347 76 354 130T362 333Q362 478 354 524T321 597Z"></path>
+</defs>
+<g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)">
+ <use xlink:href="#E3-MJMAIN-32"></use>
+ <use xlink:href="#E3-MJMAIN-35" x="500" y="0"></use>
+ <use xlink:href="#E3-MJMAIN-32" x="1001" y="0"></use>
+ <use xlink:href="#E3-MJMAIN-30" x="1501" y="0"></use>
+</g>
+</svg></span> 取模离散化
+然后正常 DP 即可
+
+f[i]=\</div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018.11.07
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/动态规划/" class="post-category" target="_blank">
+                                    动态规划
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h1, h2, h3, h4, h5, h6'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4, h5, h6').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        rml9 = function (){$mainContent.removeClass('l9');}
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+            	$tocAside.removeClass(expandedClass).slideUp(0,rml9);
+            } else {
+                $tocAside.addClass(expandedClass).slideDown();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+<footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            本站由©<a href="https://sshwy.tk/" target="_blank">Sshwy</a>基于
+            <a href="https://hexo.io/" target="_blank">Hexo</a> 的
+            <a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">hexo-theme-matery</a>主题搭建.
+
+            
+
+            
+			
+        </div>
+        <div class="col s12 m4 l4 social-link ">
+            
+
+
+    <a href="mailto:jy.cat@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&amp;fromSubId=1&amp;subcmd=all&amp;uin=1272918035" class="tooltipped" data-tooltip="QQ联系我: 1272918035" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+
+        </div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+<!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字" class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+
+<!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+<script src="/libs/materialize/materialize.min.js"></script>
+<script src="/libs/masonry/masonry.pkgd.min.js"></script>
+<script src="/libs/aos/aos.js"></script>
+<script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+<script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+<script src="/js/matery.js"></script>
+<script src="/js/crypt.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-146805234-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'UA-146805234-1');
+</script>
+
+
+
+
+
+
+
+</body></html>
