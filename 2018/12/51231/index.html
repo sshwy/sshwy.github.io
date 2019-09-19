@@ -967,6 +967,7 @@
     <span class="token function">pushup</span><span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token function">pushup</span><span class="token punctuation">(</span>u<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">// 先更新 p 再更新 u</span>
 <span class="token punctuation">}</span>
 </code></pre>
+<p>u相当于上图中的B。</p>
 <h2 id="伸展操作"><a href="#伸展操作" class="headerlink" title="伸展操作"></a>伸展操作</h2><p>Splay 利用伸展操作趋近平衡。具体描述为，将当前访问过的结点旋转至根结点的位置。</p>
 <p>这样旋转的好处在于，经常访问的结点访问速度将速度很快（因为就在根结点附近），而且在旋转的过程中，整棵树也会逐渐平衡。</p>
 <p>设访问过的结点为 x，其<strong>父结点为 p</strong>，伸展操作将循环考虑以下三种情况，直到 x 成为根结点：</p>

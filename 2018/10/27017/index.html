@@ -811,24 +811,23 @@ Exercise 1
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/10/15190/">
+                <a href="/2018/10/35848/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="[LuoguP1220] 关路灯">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="[NOI2011] 道路修建">
                         
-                        <span class="card-title">[LuoguP1220] 关路灯</span>
+                        <span class="card-title">[NOI2011] 道路修建</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary block-with-text">一道区间 DP
-#include&lt;bits/stdc++.h&gt;
-using namespace std;
-const int N=51;
-int n,c;
-int w[N],a[N];
-int f[N][N][2],s[N];
-//f</div>
+                    <div class="summary block-with-text">这道题要卡空间 128M。。。
+于是本来可以 DFS 的栈空间就爆了。。。
+法一：玄学底层 +DFS 传参优化。。。
+法二：直接拓扑。
+
+我们从叶结点开始拓扑，处理完之后删点，然后将新一轮的叶结点拓扑，逐渐逼近根结点，直到队列为空。
+因为是</div>
                     <div class="publish-info">
                             <span class="publish-date">
                                 <i class="fa fa-clock-o fa-fw icon-date"></i>2018.10.01
@@ -837,13 +836,25 @@ int f[N][N][2],s[N];
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/动态规划/" class="post-category" target="_blank">
-                                    动态规划
+                            <a href="/categories/图论/" class="post-category" target="_blank">
+                                    图论
                                 </a>
                             
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/题解/" target="_blank">
+                        <span class="chip bg-color">题解</span>
+                    </a>
+                    
+                    <a href="/tags/拓扑/" target="_blank">
+                        <span class="chip bg-color">拓扑</span>
+                    </a>
+                    
                 </div>
                 
             </div>
