@@ -10,24 +10,24 @@ mathjax: true
 date: 2018-12-06 19:04:54
 updated: 2018-12-06 19:04:54
 ---
-# Tarjan 要素
+# Tarjan 算法简述
 
 ![p1.png][1]
 
-DFS 搜索树：即对图进行 DFS 遍历时所有递归到的边组成的树。<!--more-->
+DFS 生成树：即对图进行 DFS 遍历时所有递归到的边组成的树。
 
-时间戳：对于每一个结点，我们用 DFN[i] 表示结点 i 被遍历时的次序。
+时间戳：对于每一个结点，我们用 $DFN(i)$ 表示结点 i 被遍历时的次序。
 
-追溯值：Tarjan 算法引入了追溯值 low[x].
+追溯值：Tarjan 算法引入了追溯值 $low(x)$。
 
 设以 x 为根的子树为 subtree(x).
 
-low[x] 定义为以下结点的 DFN 的最小值：（与 Tarjan 有向图中的 low[x] 区分）
+$low(x)$ 定义为以下结点的 DFN 的最小值：（与 Tarjan 有向图中的 $low(x)$ 区分）
 
-1. subtree(x) 中的结点
-2. 通过一条不在搜索树上的边能到达 subtree(x) 的结点。
+1. $subtree(x)$ 中的结点
+2. 通过一条不在搜索树上的边能到达 $subtree(x)$ 的结点。
 
-不难发现，low[i] 按搜索树的递归遍历顺序是单调递增的，因此可以在回溯的过程中求出 low[i].
+不难发现，$low(i)$ 按DFS生成树的递归遍历顺序是单调递增的，因此可以在回溯的过程中求出 $low(i)$.
 
 # 无向图的割点与割边
 
@@ -39,55 +39,61 @@ low[x] 定义为以下结点的 DFN 的最小值：（与 Tarjan 有向图中的
 
 ## 判定割边 (x,y)
 
-1. 割边一定是 DFS 搜索树上的边.
-2. 令 x 是 y 的父结点，则满足 $DFN[x] <low[y]$。也就是说，从 subtree(x) 出发，不经过 (x,y) 的前提下无法走到更早访问的结点，则 (x,y) 作为 subtree(x) 与图 G 的唯一连接，即为割边。
+1. 割边一定是 DFS 搜索树上的边。
+2. 令 x 是 y 的父结点，则满足 $DFN(x)<low(y)$。也就是说，从 subtree(x) 出发，不经过 (x,y) 的前提下无法走到更早访问的结点，则 (x,y) 作为 subtree(x) 与图 G 的唯一连接，即为割边。
 
 ```cpp
 int dfn[N],low[N],dfn_cnt;
 int ans[N],cnt;
-void tarjan(int k,int p){//tarjan 找桥
+void tarjan(int k,int p){//tarjan 找桥，根结点的父节点为0
 	dfn[k]=low[k]=++dfn_cnt;
-	for(int i=h[k];i;i=e[i].nex){int u=e[i].t;
-		if(!dfn[u]){tarjan(u,k);
+	for(int i=h[k];i;i=e[i].nex){
+        int u=e[i].t;
+		if(!dfn[u]){
+            tarjan(u,k);
 			low[k]=min(low[k],low[u]);
 			if(dfn[k]<low[u])ans[++cnt]=e[i].idx;// 桥
 		}
-		else if(u!=p)low[k]=min(low[k],dfn[u]);
+		else if(p!=0)low[k]=min(low[k],dfn[u]);
 	}
 }
 ```
 
 ## 判定割点 x
 
-1. 若 x 不为根结点，则要求，存在 x 的子结点 y，满足 $DFN[x]\leq low[y]$. 即 subtree(y) 中的结点最多能走到结点 x，那么将 x 删除就会导致 subtree(y) 与图 G 不连通.
-1. 若 x 是根结点，则要求存在**至少 2 个**的子结点 y，满足 $DFN[x]\leq low[y]​$.
+1. 若 $x$ 不为根结点，则要求，存在 $x$ 的子结点 $y$，满足 $DFN(x)\leq low(y)$. 即 $subtree(y)$ 中的结点最多能走到结点 $x$，那么将 $x$ 删除就会导致 $subtree(y)$ 与图 $G$ 不连通。
+2. 若 $x$ 是根结点，则要求存在**至少 2 个**的子结点 $y$，满足 $DFN(x)\leq low(y)$。
 
 ```cpp
-void tarjan(int u,int p){low[u]=dfn[u]=++dcnt;
-	int count=0;
-	for(int i=h[u];i;i=e[i].nex){const int v=e[i].t;
-		if(!dfn[v]){tarjan(v,u);
-			low[u]=min(low[u],low[v]);
-			if(dfn[u]<=low[v])count++;
-		}
-		else if(v!=p)low[u]=min(low[u],dfn[v]);
-	}
-	if(count-(u==p)>0)ans[++ant]=u;
+int dfn[N],low[N],totdfn;
+bool cut[N];
+int ans[N],la;
+void tarjan(int u,int p){
+    dfn[u]=low[u]=++totdfn;
+    int cnt=0;
+    for(int i=h[u];i;i=e[i].nex){
+        const int v=e[i].t;
+        if(!dfn[v]){
+            tarjan(v,u);
+            low[u]=min(low[u],low[v]);
+            cnt+=dfn[u]<=low[v];
+        }else low[u]=min(low[u],dfn[v]);
+    }
+    if(cnt-(p==0)>=1)cut[u]=1;
 }
 ```
-
-
 
 # 无向图的双连通分量
 
 ![p3.png][3]
-## 边双连通分量 ·E-DCC
+
+## 边双连通分量 E-DCC
 
 无向图 G 的子图 G'内不存在割边，则称 G'是图 G 的边双连通分量。
 
 对于图 G，直接删掉所有割边，剩下分量的就是边双连通分量。
 
-## 点双连通分量 ·V-DCC
+## 点双连通分量 V-DCC
 
 无向图 G 的子图 G'内不存在割点，则称 G'是图 G 的点双连通分量。
 
@@ -101,9 +107,9 @@ void tarjan(int u,int p){low[u]=dfn[u]=++dcnt;
   1. 从栈顶不断弹出结点，直到 y 被弹出。
   1. 刚才弹出的所有结点与结点 x 一起构成一个 v-DCC.
 
-# [POI2008]BLO
+# POI2008 BLO
 
-给定一张无向图，求每个点被封锁之后有多少个有序点对 (x,y)(x!=y,1<=x,y<=n) 满足 x 无法到达 y
+给定一张无向图，求每个点被封锁之后有多少个有序点对 $(x,y),x\ne y,1\le x,y\le n$满足 x 无法到达 y
 
 ## 分析
 
@@ -149,11 +155,14 @@ long long ans[N];
 void tarjan(int u,int p){//p 为 u 的父结点
 	dfn[u]=low[u]=++dfncnt,s[++tp]=u,sz[u]=1;
 	int count=0,sum=0;// 当前 u 的子结点的子树和
-	for(int i=h[u];i;i=e[i].nex){const int &v=e[i].t;
-		if(!dfn[v]){tarjan(v,u);
+	for(int i=h[u];i;i=e[i].nex){
+        const int &v=e[i].t;
+		if(!dfn[v]){
+            tarjan(v,u);
 			low[u]=min(low[u],low[v]);
 			sz[u]+=sz[v];
-			if(dfn[u]<=low[v]){ans[u]+=(long long)sz[v]*(n-sz[v]);// 统计答案
+			if(dfn[u]<=low[v]){
+                ans[u]+=(long long)sz[v]*(n-sz[v]);// 统计答案
 				sum+=sz[v],count++;//count:dfn[u]<=low[v] 的个数
 			}
 		}
@@ -162,8 +171,10 @@ void tarjan(int u,int p){//p 为 u 的父结点
 	if(count-(u==p)>0)ans[u]+=(long long)(n-1-sum)*(1+sum)+n-1;
 	else ans[u]=2*(n-1);// 不是割点，之前的计算无效
 }
-int main(){scanf("%d%d",&n,&m);
-	for(int i=1;i<=m;i++){int a,b;
+int main(){
+    scanf("%d%d",&n,&m);
+	for(int i=1;i<=m;i++){
+        int a,b;
 		scanf("%d%d",&a,&b);
 		add_path(a,b);add_path(b,a);
 	}
@@ -173,11 +184,6 @@ int main(){scanf("%d%d",&n,&m);
 }
 ```
 
-
-
-
-
 [1]: https://hexo-source-1257756441.cos.ap-chengdu.myqcloud.com/2018/09/3902810133.png
 [2]: https://hexo-source-1257756441.cos.ap-chengdu.myqcloud.com/2018/09/3962146379.png
-
 [3]: https://hexo-source-1257756441.cos.ap-chengdu.myqcloud.com/2018/09/1620780469.png
