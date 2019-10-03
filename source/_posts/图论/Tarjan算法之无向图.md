@@ -54,7 +54,7 @@ void tarjan(int k,int p){//tarjan 找桥，根结点的父节点为0
 			low[k]=min(low[k],low[u]);
 			if(dfn[k]<low[u])ans[++cnt]=e[i].idx;// 桥
 		}
-		else if(p!=0)low[k]=min(low[k],dfn[u]);
+		else if(u!=p)low[k]=min(low[k],dfn[u]);
 	}
 }
 ```
