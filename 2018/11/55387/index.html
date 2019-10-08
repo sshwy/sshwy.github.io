@@ -412,11 +412,11 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h1><p>状压 DP，是一种动态规划。<br>一般的动态规划状态简单，通常一两个维度就能搞定。不过当状态过于复杂时，简单的维度将无法表示状态，而过多的维度将加大复杂度，于是，就有了状压 DP 的出现。</p>
+                <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>状压 DP，是一种动态规划。<br>一般的动态规划状态简单，通常一两个维度就能搞定。不过当状态过于复杂时，简单的维度将无法表示状态，而过多的维度将加大复杂度，于是，就有了状压 DP 的出现。</p>
 <a id="more"></a>
-<h1 id="状态压缩"><a href="#状态压缩" class="headerlink" title="状态压缩"></a>状态压缩</h1><p>状压 DP 的要点，就是状态压缩。状态压缩，指将复杂的状态利用位运算（大多数时候）压缩为二进制数，进而压缩成一个维度。因为位是呈线性的，所以通常用于表示线性的状态，比如一行的状态。</p>
+<h2 id="状态压缩"><a href="#状态压缩" class="headerlink" title="状态压缩"></a>状态压缩</h2><p>状压 DP 的要点，就是状态压缩。状态压缩，指将复杂的状态利用位运算（大多数时候）压缩为二进制数，进而压缩成一个维度。因为位是呈线性的，所以通常用于表示线性的状态，比如一行的状态。</p>
 <p>有关状态设计，一般而言，二进制表示一行的位置上的存在性。对于状态转移的部分，使用位运算优化。有的状压 DP 会用到三，四进制，表示前几行的这些列上拜访的数量情况（单行上单个位置的数量）。</p>
-<h1 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h1><ul>
+<h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><ul>
 <li>判断是否需要状态压缩</li>
 <li>判断 DP 维度</li>
 <li>判断时间复杂度</li>
@@ -424,7 +424,7 @@
 <li>计算所有状态集并初始化</li>
 <li>按维度 DP</li>
 </ul>
-<h1 id="SCOI2005-扫雷"><a href="#SCOI2005-扫雷" class="headerlink" title="[SCOI2005] 扫雷"></a>[SCOI2005] 扫雷</h1><p><span class="mjpage"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="12.417ex" height="2.843ex" style="vertical-align: -0.838ex;" viewBox="0 -863.1 5346.3 1223.9" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg">
+<h2 id="SCOI2005-扫雷"><a href="#SCOI2005-扫雷" class="headerlink" title="[SCOI2005] 扫雷"></a>[SCOI2005] 扫雷</h2><p><span class="mjpage"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="12.417ex" height="2.843ex" style="vertical-align: -0.838ex;" viewBox="0 -863.1 5346.3 1223.9" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg">
 <defs>
 <path stroke-width="1" id="E1-MJMATHI-66" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path>
 <path stroke-width="1" id="E1-MJMAIN-5B" d="M118 -250V750H255V710H158V-210H255V-250H118Z"></path>
@@ -501,7 +501,7 @@
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h1 id="SCOI2005-互不侵犯的-KING"><a href="#SCOI2005-互不侵犯的-KING" class="headerlink" title="[SCOI2005] 互不侵犯的 KING"></a>[SCOI2005] 互不侵犯的 KING</h1><h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>显然，这道题用暴力搜索极难实现，难点在于对放置状态的记录，以及对下一个位置的选择。<br>因此，考虑到状态压缩。</p>
+<h2 id="SCOI2005-互不侵犯的-KING"><a href="#SCOI2005-互不侵犯的-KING" class="headerlink" title="[SCOI2005] 互不侵犯的 KING"></a>[SCOI2005] 互不侵犯的 KING</h2><p>显然，这道题用暴力搜索极难实现，难点在于对放置状态的记录，以及对下一个位置的选择。<br>因此，考虑到状态压缩。</p>
 <p>令状态集为 <span class="mjpage"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.499ex" height="2.176ex" style="vertical-align: -0.338ex;" viewBox="0 -791.3 645.5 936.9" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg">
 <defs>
 <path stroke-width="1" id="E5-MJMATHI-53" d="M308 24Q367 24 416 76T466 197Q466 260 414 284Q308 311 278 321T236 341Q176 383 176 462Q176 523 208 573T273 648Q302 673 343 688T407 704H418H425Q521 704 564 640Q565 640 577 653T603 682T623 704Q624 704 627 704T632 705Q645 705 645 698T617 577T585 459T569 456Q549 456 549 465Q549 471 550 475Q550 478 551 494T553 520Q553 554 544 579T526 616T501 641Q465 662 419 662Q362 662 313 616T263 510Q263 480 278 458T319 427Q323 425 389 408T456 390Q490 379 522 342T554 242Q554 216 546 186Q541 164 528 137T492 78T426 18T332 -20Q320 -22 298 -22Q199 -22 144 33L134 44L106 13Q83 -14 78 -18T65 -22Q52 -22 52 -14Q52 -11 110 221Q112 227 130 227H143Q149 221 149 216Q149 214 148 207T144 186T142 153Q144 114 160 87T203 47T255 29T308 24Z"></path>
@@ -699,7 +699,7 @@
 </svg></span> 表示这一行国王的数量。</p>
 <p>然后，便需要求出<strong>所有状态集</strong>，以供 DP 时遍历。这个过程一般用二进制数直接累加或循环的办法。对于每一个二进制状态，判断一行上国王是否冲突，据此加入状态集合。</p>
 <p>最后，按照方程遍历即可。</p>
-<h2 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h2><pre class=" language-lang-cpp"><code class="language-lang-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iostream&gt;</span></span>
+<pre class=" language-lang-cpp"><code class="language-lang-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;iostream&gt;</span></span>
 
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
@@ -734,7 +734,7 @@ data v<span class="token punctuation">[</span><span class="token punctuation">(<
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h1 id="Usaco2006-Nov-Corn-Fields"><a href="#Usaco2006-Nov-Corn-Fields" class="headerlink" title="[Usaco2006 Nov]Corn Fields"></a>[Usaco2006 Nov]Corn Fields</h1><h2 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h2><p>一道稍微简单的状压 DP。</p>
+<h2 id="Usaco2006-Nov-Corn-Fields"><a href="#Usaco2006-Nov-Corn-Fields" class="headerlink" title="[Usaco2006 Nov]Corn Fields"></a>[Usaco2006 Nov]Corn Fields</h2><p>一道稍微简单的状压 DP。</p>
 <p>定义 <span class="mjpage"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="5.367ex" height="2.843ex" style="vertical-align: -0.838ex;" viewBox="0 -863.1 2310.7 1223.9" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg">
 <defs>
 <path stroke-width="1" id="E20-MJMATHI-66" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path>
@@ -848,7 +848,7 @@ data v<span class="token punctuation">[</span><span class="token punctuation">(<
  <use xlink:href="#E23-MJMAIN-7D" x="22566" y="0"></use>
 </g>
 </svg></span></p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre class=" language-lang-cpp"><code class="language-lang-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h&gt;</span></span>
+<pre class=" language-lang-cpp"><code class="language-lang-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h&gt;</span></span>
 <span class="token macro property">#<span class="token directive keyword">define</span> P 100000000</span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 <span class="token keyword">int</span> n<span class="token punctuation">,</span>m<span class="token punctuation">,</span>cnt<span class="token punctuation">,</span>tot<span class="token punctuation">;</span>
@@ -881,7 +881,7 @@ data v<span class="token punctuation">[</span><span class="token punctuation">(<
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h1 id="NOI2001-炮兵阵地"><a href="#NOI2001-炮兵阵地" class="headerlink" title="[NOI2001] 炮兵阵地"></a>[NOI2001] 炮兵阵地</h1><p>状压 DP</p>
+<h2 id="NOI2001-炮兵阵地"><a href="#NOI2001-炮兵阵地" class="headerlink" title="[NOI2001] 炮兵阵地"></a>[NOI2001] 炮兵阵地</h2><p>状压 DP</p>
 <p>要考虑相邻两行的状态（<span class="mjpage"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="7.612ex" height="2.843ex" style="vertical-align: -0.838ex;" viewBox="0 -863.1 3277.3 1223.9" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg">
 <defs>
 <path stroke-width="1" id="E24-MJMATHI-66" d="M118 -162Q120 -162 124 -164T135 -167T147 -168Q160 -168 171 -155T187 -126Q197 -99 221 27T267 267T289 382V385H242Q195 385 192 387Q188 390 188 397L195 425Q197 430 203 430T250 431Q298 431 298 432Q298 434 307 482T319 540Q356 705 465 705Q502 703 526 683T550 630Q550 594 529 578T487 561Q443 561 443 603Q443 622 454 636T478 657L487 662Q471 668 457 668Q445 668 434 658T419 630Q412 601 403 552T387 469T380 433Q380 431 435 431Q480 431 487 430T498 424Q499 420 496 407T491 391Q489 386 482 386T428 385H372L349 263Q301 15 282 -47Q255 -132 212 -173Q175 -205 139 -205Q107 -205 81 -186T55 -132Q55 -95 76 -78T118 -61Q162 -61 162 -103Q162 -122 151 -136T127 -157L118 -162Z"></path>
@@ -975,7 +975,7 @@ data v<span class="token punctuation">[</span><span class="token punctuation">(<
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<h1 id="POJ2411-Mondriaan’s-Dream"><a href="#POJ2411-Mondriaan’s-Dream" class="headerlink" title="[POJ2411]Mondriaan’s Dream"></a>[POJ2411]Mondriaan’s Dream</h1><p>典型的状压 DP</p>
+<h2 id="POJ2411-Mondriaan’s-Dream"><a href="#POJ2411-Mondriaan’s-Dream" class="headerlink" title="[POJ2411]Mondriaan’s Dream"></a>[POJ2411]Mondriaan’s Dream</h2><p>典型的状压 DP</p>
 <p>对于每一行的状态，<span class="mjpage"><svg xmlns:xlink="http://www.w3.org/1999/xlink" width="1.162ex" height="2.176ex" style="vertical-align: -0.338ex;" viewBox="0 -791.3 500.5 936.9" role="img" focusable="false" xmlns="http://www.w3.org/2000/svg">
 <defs>
 <path stroke-width="1" id="E29-MJMAIN-31" d="M213 578L200 573Q186 568 160 563T102 556H83V602H102Q149 604 189 617T245 641T273 663Q275 666 285 666Q294 666 302 660V361L303 61Q310 54 315 52T339 48T401 46H427V0H416Q395 3 257 3Q121 3 100 0H88V46H114Q136 46 152 46T177 47T193 50T201 52T207 57T213 61V578Z"></path>
