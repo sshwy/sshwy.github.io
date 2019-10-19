@@ -1,11 +1,11 @@
 <!DOCTYPE html><html lang="zh-CN"><head><meta name="generator" content="Hexo 3.8.0">
     <meta charset="utf-8">
-    <meta name="keywords" content="ZROI2018.8.9 玄学数据结构, Oier, Algorithm, Blog, sshwy, hwy, yaoyao">
-    <meta name="description" content="数据结构模拟赛题面 A B C
-A. 黑桃城直接 DFS 遍历树。子树的 DFN 序是连续的，因此转化为区间上维护，线段树即可。
-B. 红五月树剖，详细毒瘤的分类讨论
-C. 海棠溪Subtask1-3
-动态规划，定义 f[i,j] 表示两朵">
+    <meta name="keywords" content="2019CSP-S 游记, Oier, Algorithm, Blog, sshwy, hwy, yaoyao">
+    <meta name="description" content="摘要
+目前处于第一轮结束的阶段
+
+CSP-S 第一轮认证考前一周疯狂刷初赛，也刷了两套新题型。结果考的时侯居然还有判断题……但总体题型看下来是意料之中。
+赶往考场的路上似乎也不是那么紧张。本来想听些舒缓音乐的歌单，但地铁上有点热于是开始看《">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +13,7 @@ C. 海棠溪Subtask1-3
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>ZROI2018.8.9 玄学数据结构 | Sshwy's Blog</title>
+    <title>2019CSP-S 游记 | Sshwy's Blog</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -258,13 +258,13 @@ C. 海棠溪Subtask1-3
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        ZROI2018.8.9 玄学数据结构
+                        2019CSP-S 游记
                     </div>
                 </div>
             </div>
@@ -380,22 +380,13 @@ C. 海棠溪Subtask1-3
                 </div>
                 <div class="col s5 right-align">
                     
-                    <div class="post-cate">
-                        <i class="fa fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/比赛/" class="post-category" target="_blank">
-                                比赛
-                            </a>
-                        
-                    </div>
-                    
                 </div>
             </div>
 
             <div class="post-info">
                 <div class="post-date info-break-policy">
                     <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2018-10-01
+                    2019-10-19
                 </div>
 
                 
@@ -406,43 +397,13 @@ C. 海棠溪Subtask1-3
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="数据结构模拟赛"><a href="#数据结构模拟赛" class="headerlink" title="数据结构模拟赛"></a>数据结构模拟赛</h1><p>题面 <a href="https://hexo-source-1257756441.cos.ap-chengdu.myqcloud.com/2018/08/616931843.pdf" target="_blank" rel="noopener">A</a> <a href="https://hexo-source-1257756441.cos.ap-chengdu.myqcloud.com/2018/08/1391601213.pdf" target="_blank" rel="noopener">B</a> <a href="https://hexo-source-1257756441.cos.ap-chengdu.myqcloud.com/2018/08/2158944400.pdf" target="_blank" rel="noopener">C</a></p>
-<h2 id="A-黑桃城"><a href="#A-黑桃城" class="headerlink" title="A. 黑桃城"></a>A. 黑桃城</h2><p>直接 DFS 遍历树。子树的 DFN 序是连续的，因此转化为区间上维护，线段树即可。</p>
-<h2 id="B-红五月"><a href="#B-红五月" class="headerlink" title="B. 红五月"></a>B. 红五月</h2><p>树剖，详细毒瘤的分类讨论</p>
-<h2 id="C-海棠溪"><a href="#C-海棠溪" class="headerlink" title="C. 海棠溪"></a>C. 海棠溪</h2><h3 id="Subtask1-3"><a href="#Subtask1-3" class="headerlink" title="Subtask1-3"></a>Subtask1-3</h3><ul>
-<li>动态规划，定义 f[i,j] 表示两朵花分别位于选择的第 i，j 个人手中（令 i&gt;j）</li>
-<li>使用滚动数组优化空间。<pre class=" language-lang-cpp"><code class="language-lang-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;bits/stdc++.h&gt;</span></span>
-<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
-<span class="token keyword">typedef</span> <span class="token keyword">long</span> <span class="token keyword">long</span> ll<span class="token punctuation">;</span>
-<span class="token keyword">const</span> <span class="token keyword">int</span> INF<span class="token operator">=</span><span class="token number">999999999</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> <span class="token keyword">int</span> N<span class="token operator">=</span><span class="token number">200005</span><span class="token punctuation">;</span>
-<span class="token keyword">int</span> n<span class="token punctuation">,</span>t<span class="token punctuation">,</span>a<span class="token punctuation">,</span>b<span class="token punctuation">;</span>
-<span class="token keyword">int</span> p<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">int</span> f<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">int</span> <span class="token function">mabs</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token keyword">return</span> x<span class="token operator">&lt;</span><span class="token number">0</span><span class="token operator">?</span><span class="token number">0</span><span class="token operator">-</span>x<span class="token operator">:</span>x<span class="token punctuation">;</span><span class="token punctuation">}</span>
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-  <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d%d%d%d"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>n<span class="token punctuation">,</span><span class="token operator">&amp;</span>t<span class="token punctuation">,</span><span class="token operator">&amp;</span>a<span class="token punctuation">,</span><span class="token operator">&amp;</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  p<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span>a<span class="token punctuation">,</span>p<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span>b<span class="token punctuation">;</span>
-  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>t<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span><span class="token operator">&amp;</span>p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
-      <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>j<span class="token operator">&lt;=</span>t<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span>
-          f<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span>INF<span class="token punctuation">;</span>
-  f<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
-  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>t<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-      <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>j<span class="token operator">&lt;=</span>t<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span>f<span class="token punctuation">[</span><span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span>INF<span class="token punctuation">;</span>
-      <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>j<span class="token operator">&lt;=</span>i<span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-          f<span class="token punctuation">[</span><span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token function">min</span><span class="token punctuation">(</span>f<span class="token punctuation">[</span><span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span>f<span class="token punctuation">[</span>i<span class="token operator">&amp;</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">+</span><span class="token function">mabs</span><span class="token punctuation">(</span>p<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">-</span>p<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-          f<span class="token punctuation">[</span><span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">=</span><span class="token function">min</span><span class="token punctuation">(</span>f<span class="token punctuation">[</span><span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span>f<span class="token punctuation">[</span>i<span class="token operator">&amp;</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token operator">+</span><span class="token function">mabs</span><span class="token punctuation">(</span>p<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">-</span>p<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span>
-  <span class="token punctuation">}</span>
-  <span class="token keyword">int</span> ans<span class="token operator">=</span>INF<span class="token punctuation">;</span>
-  <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span>t<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>ans<span class="token operator">=</span><span class="token function">min</span><span class="token punctuation">(</span>ans<span class="token punctuation">,</span>f<span class="token punctuation">[</span><span class="token punctuation">(</span>t<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&amp;</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span>ans<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
-</li>
-</ul>
+                <p><strong>摘要</strong></p>
+<p>目前处于第一轮结束的阶段</p>
+<a id="more"></a>
+<h2 id="CSP-S-第一轮认证"><a href="#CSP-S-第一轮认证" class="headerlink" title="CSP-S 第一轮认证"></a>CSP-S 第一轮认证</h2><p>考前一周疯狂刷初赛，也刷了两套新题型。结果考的时侯居然还有判断题……但总体题型看下来是意料之中。</p>
+<p>赶往考场的路上似乎也不是那么紧张。本来想听些舒缓音乐的歌单，但地铁上有点热于是开始看《乡土中国》。路上还遇到了cyc学长，说是最后过来玩一玩。</p>
+<p>考的时侯也就那样，比平时刷题的速度慢了很多，选完了还要确认两三次。最后一道完形题有点自闭，看了半小时才懂它DP的过程。最后花了15分钟检查完后就刚好收卷，也检查出了一道判断题的错。</p>
+<p>考完也没对答案，似乎各大机构对此赛事漠不关心，因此也没有什么民间答案满天飞。地铁上继续看《乡土中国》。</p>
 
             </div>
             <hr>
@@ -466,7 +427,7 @@ C. 海棠溪Subtask1-3
                     </span>
                     <a href="https://sshwy.tk" class="b-link-green">Sshwy's Blog</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2018/10/44813/" class="b-link-green">ZROI2018.8.9 玄学数据结构</a>
+                    <a href="/2019/10/28939/" class="b-link-green">2019CSP-S 游记</a>
                 </p>
             </div>
         </div>
@@ -709,40 +670,37 @@ C. 海棠溪Subtask1-3
         
         <div class="article col s12 m6 overflow-policy" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2018/10/3214/">
+                <a href="/2019/10/28939/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="ZROI2018.7.27% 你赛">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="2019CSP-S 游记">
                         
-                        <span class="card-title">ZROI2018.7.27% 你赛</span>
+                        <span class="card-title">2019CSP-S 游记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary block-with-text">提高组模拟赛题面
+                    <div class="summary block-with-text">摘要
+目前处于第一轮结束的阶段
 
-A. 小 T 的 GCD分两个问题求解
-Task1考虑到在你找到符合要求的序列后后，在其左右两边增加数字，并不会对结果有影响（多多益善）。所以直接计算整个序列的 gcd，判断是否为 1 即可。
-Task2
-lcm(a1.</div>
+CSP-S 第一轮认证考前一周疯狂刷初赛，也刷了两套新题型。结果考的时侯居然还有判断题……但总体题型看下来是意料之中。
+赶往考场的路上似乎也不是那么紧张。本来想听些舒缓音乐的歌单，但地铁上有点热于是开始看《</div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018.10.01
-                        </span>
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019.10.19
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/比赛/" class="post-category" target="_blank">
-                                    比赛
-                                </a>
-                            
+                            <i class="fa fa-user fa-fw"></i>
+                            Sshwy
                             
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -753,34 +711,29 @@ lcm(a1.</div>
                 下一篇&nbsp;<i class="fa fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2018/10/45139/">
+                <a href="/2019/09/31165/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="ZROI 提高组 Day5">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="一套题与心路">
                         
-                        <span class="card-title">ZROI 提高组 Day5</span>
+                        <span class="card-title">一套题与心路</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary block-with-text">小结：暴力 &amp; 优化
-心态不能炸，暴力不能丢
-对于每一个数据范围都要思考，从算法复杂度猜测入手，直到确定完整算法 
-对于下一个数据范围，考虑能否对上一个范围的算法做优化（比如 DP 优化）
-优化大多数时候建立在基础算法上
-不能放弃任</div>
+                    <div class="summary block-with-text">摘要
+感觉是精神状态不大好的原因吧
+
+A
+给定一个 01 序列，请你找到一个最长的子序列，使得第一个 1 到开头的距离、相邻两个 1 之间的距离、最后一个 1 到结尾的距离都相同。例如00100100和0001000就是符合要求的子序列，0</div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2018.10.01
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2019.09.15
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fa fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/比赛/" class="post-category" target="_blank">
-                                    比赛
-                                </a>
-                            
+                            <i class="fa fa-user fa-fw"></i>
+                            Sshwy
                             
                         </span>
                     </div>
