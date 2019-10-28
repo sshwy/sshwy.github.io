@@ -440,94 +440,68 @@ set autoindent
 set smartindent
 set tabstop=4 "</span> Tab 宽度为 4 个字符
 <span class="token keyword">set</span> shiftwidth<span class="token operator">=</span>4 <span class="token string">" 自动缩进的时候，缩进尺寸为 4 个空格
-set backspace=indent,eol,start
-set foldmethod=syntax
+set backspace=indent,eol,start 
+set foldmethod=marker
 set foldlevel=99
-set encoding=utf-8
-set ambiwidth=double
-"</span><span class="token keyword">set</span> whichwrap+<span class="token operator">=</span>b,s,h,l,<span class="token operator">&lt;</span>,<span class="token operator">&gt;</span>,<span class="token punctuation">[</span>,<span class="token punctuation">]</span>
-<span class="token keyword">set</span> et  <span class="token string">" 编辑时将所有 Tab 替换为空格
-set smarttab
-"</span><span class="token keyword">set</span> lbr
-<span class="token keyword">set</span> fo+<span class="token operator">=</span>mB
-<span class="token keyword">set</span> selection<span class="token operator">=</span>inclusive
-<span class="token keyword">set</span> wildmenu
+set encoding=utf-8 
+set ambiwidth=double 
+set et  "</span> 编辑时将所有 Tab 替换为空格
+<span class="token keyword">set</span> smarttab
+<span class="token keyword">set</span> fo+<span class="token operator">=</span>mB 
+<span class="token keyword">set</span> selection<span class="token operator">=</span>inclusive 
+<span class="token keyword">set</span> wildmenu 
 <span class="token keyword">set</span> fileencodings<span class="token operator">=</span>ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 
 imap jj <span class="token operator">&lt;</span>ESC<span class="token operator">&gt;</span>
-imap <span class="token operator">&lt;</span>C-t<span class="token operator">&gt;</span><span class="token operator">&lt;</span>C-t<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>C-R<span class="token operator">&gt;=</span>strftime<span class="token punctuation">(</span><span class="token string">"%Y-%m-%d %H:%M:%S"</span><span class="token punctuation">)</span><span class="token operator">&lt;</span>CR<span class="token operator">&gt;</span>
-nmap <span class="token operator">&lt;</span>F5<span class="token operator">&gt;</span> :<span class="token operator">!</span>clear<span class="token punctuation">;</span>g++ % -o %<span class="token operator">&lt;</span>-Wall <span class="token operator">&lt;</span>ESC<span class="token operator">&gt;</span>
-nmap <span class="token operator">&lt;</span>F6<span class="token operator">&gt;</span> :<span class="token operator">!</span>clear<span class="token punctuation">;</span><span class="token function">time</span> ./%<span class="token operator">&lt;&lt;</span>ESC<span class="token operator">&gt;</span>
-nmap <span class="token operator">&lt;</span>F7<span class="token operator">&gt;</span> :<span class="token operator">!</span>clear<span class="token punctuation">;</span><span class="token function">time</span> ./%<span class="token operator">&lt;&lt;</span>%<span class="token operator">&lt;</span>.in <span class="token operator">&lt;</span>ESC<span class="token operator">&gt;</span>
+nmap <span class="token operator">&lt;</span>F5<span class="token operator">&gt;</span> :<span class="token operator">!</span>clear<span class="token punctuation">;</span>g++ % -O2 -ggdb -o %<span class="token operator">&lt;</span> -Wall <span class="token operator">&lt;</span>ESC<span class="token operator">&gt;</span>
+nmap <span class="token operator">&lt;</span>F6<span class="token operator">&gt;</span> :<span class="token operator">!</span>clear<span class="token punctuation">;</span><span class="token function">time</span> ./%<span class="token operator">&lt;</span> <span class="token operator">&lt;</span>ESC<span class="token operator">&gt;</span>
+nmap <span class="token operator">&lt;</span>F7<span class="token operator">&gt;</span> :<span class="token operator">!</span>clear<span class="token punctuation">;</span><span class="token function">time</span> ./%<span class="token operator">&lt;</span> <span class="token operator">&lt;</span> %<span class="token operator">&lt;</span>.in <span class="token operator">&lt;</span>ESC<span class="token operator">&gt;</span>
 nmap <span class="token operator">&lt;</span>F8<span class="token operator">&gt;</span> :vsp %<span class="token operator">&lt;</span>.in <span class="token operator">&lt;</span>ESC<span class="token operator">&gt;</span>
-nmap <span class="token operator">&lt;</span>F9<span class="token operator">&gt;</span> :<span class="token operator">!</span>clear<span class="token punctuation">;</span>gedit % <span class="token operator">&lt;</span>ESC<span class="token operator">&gt;</span>
+nmap <span class="token operator">&lt;</span>F9<span class="token operator">&gt;</span> :<span class="token operator">!</span>clear<span class="token punctuation">;</span>gdb --tui %<span class="token operator">&lt;</span> <span class="token operator">&lt;</span>ESC<span class="token operator">&gt;</span>
 nmap <span class="token operator">&lt;</span>C-g<span class="token operator">&gt;</span> gg<span class="token string">"+yG &lt;ESC&gt;
-nmap df za
 vmap &lt;C-c&gt; "</span>+y <span class="token operator">&lt;</span>ESC<span class="token operator">&gt;</span>
 
 <span class="token keyword">set</span> shell<span class="token operator">=</span>/bin/zsh
 au BufRead,BufNewFile *.ejs <span class="token keyword">set</span> filetype<span class="token operator">=</span>html " 文件类型映射
 </code></pre>
 <p>插件配置</p>
-<pre class=" language-lang-bash"><code class="language-lang-bash"><span class="token string">"Vundle
+<pre class=" language-lang-bash"><code class="language-lang-bash">call plug<span class="token comment" spellcheck="true">#begin('~/.vim/plugged')</span>
 
-set nocompatible              "</span> be iMproved, required
-filetype off                  <span class="token string">"required"</span> <span class="token keyword">set</span> the runtime path to include Vundle and initialize
-<span class="token keyword">set</span> rtp+<span class="token operator">=</span>/home/sshwy/.vim/bundle/Vundle.vim
-call vundle<span class="token comment" spellcheck="true">#begin()</span>
-<span class="token string">"alternatively, pass a path where Vundle should install plugins"</span>call vundle<span class="token comment" spellcheck="true">#begin('~/some/path/here')</span>
+<span class="token keyword">if</span> has<span class="token punctuation">(</span><span class="token string">"gui_running"</span><span class="token punctuation">)</span>
+    Plug <span class="token string">'lervag/vimtex'</span>
+    <span class="token keyword">let</span> g:tex_flavor<span class="token operator">=</span><span class="token string">'latex'</span>
+    <span class="token string">" let g:vimtex_view_method='evince'
+    let g:vimtex_view_general_viewer='evince'
+    let g:vimtex_quickfix_mode=0
+    set conceallevel=1
+    let g:tex_conceal='abdmg'
+    let g:vimtex_fold_manual=1
+endif
 
-<span class="token string">" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+Plug 'nikvdp/ejs-syntax'
 
-"</span>The following are examples of different formats supported.<span class="token string">" Keep Plugin commands between vundle#begin/end.
-"</span> plugin on GitHub repo
-Plugin <span class="token string">'tpope/vim-fugitive'</span>
-<span class="token string">"plugin from http://vim-scripts.org/vim/scripts.html"</span> Plugin <span class="token string">'L9'</span>
-<span class="token string">" Git plugin not hosted on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
-"</span> <span class="token function">git</span> repos on your local machine <span class="token punctuation">(</span>i.e. when working on your own plugin<span class="token punctuation">)</span>
-Plugin <span class="token string">'hotoo/pangu.vim'</span>
-<span class="token string">"The sparkup vim script is in a subdirectory of this repo called vim."</span> Pass the path to <span class="token keyword">set</span> the runtimepath properly.
-Plugin <span class="token string">'rstacruz/sparkup'</span>, <span class="token punctuation">{</span><span class="token string">'rtp'</span><span class="token keyword">:</span> <span class="token string">'vim/'</span><span class="token punctuation">}</span>
-<span class="token string">"Install L9 and avoid a Naming conflict if you've already installed a
-"</span>different version somewhere else.<span class="token string">" Plugin 'ascenator/L9', {'name': 'newL9'}
-
-"</span> Python 缩进插件
-Plugin <span class="token string">'vim-scripts/indentpython.vim'</span>
-<span class="token string">" 自动格式化插件，快捷键 F10
-Plugin 'Chiel92/vim-autoformat'
-nnoremap &lt;F10&gt; :Autoformat&lt;CR&gt;
-let g:autoformat_autoindent = 0
-let g:autoformat_retab = 0
-let g:autoformat_remove_trailing_spaces = 0
-
-"</span> vim 文件树，F3 启动
-Plugin <span class="token string">'https://github.com/scrooloose/nerdtree'</span>
-nnoremap <span class="token operator">&lt;</span>F3<span class="token operator">&gt;</span> :NERDTreeToggle<span class="token operator">&lt;</span>CR<span class="token operator">&gt;</span>
-autocmd bufenter * <span class="token keyword">if</span> <span class="token punctuation">(</span>winnr<span class="token punctuation">(</span><span class="token string">"$"</span><span class="token punctuation">)</span> <span class="token operator">==</span> 1 <span class="token operator">&amp;&amp;</span> exists<span class="token punctuation">(</span><span class="token string">"b:NERDTree"</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> b:NERDTree.isTabTree<span class="token punctuation">(</span><span class="token punctuation">))</span> <span class="token operator">|</span> q <span class="token operator">|</span> endif
-
-<span class="token string">" vim 增强状态栏
-Plugin 'https://github.com/bling/vim-airline'
+Plug 'git://gitee.com/sshwy/pangu.vim.git' "</span>Pangu 插件
+<span class="token string">"Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 "</span> 五颜六色的括号
-Plugin <span class="token string">'kien/rainbow_parentheses.vim'</span>
-<span class="token keyword">let</span> g:rbpt_colorpairs <span class="token operator">=</span> <span class="token punctuation">[</span>\ <span class="token punctuation">[</span><span class="token string">'brown'</span>,       <span class="token string">'RoyalBlue3'</span><span class="token punctuation">]</span>,
-                        \ <span class="token punctuation">[</span><span class="token string">'Darkblue'</span>,    <span class="token string">'SeaGreen3'</span><span class="token punctuation">]</span>,
-                        \ <span class="token punctuation">[</span><span class="token string">'darkgray'</span>,    <span class="token string">'DarkOrchid3'</span><span class="token punctuation">]</span>,
-                        \ <span class="token punctuation">[</span><span class="token string">'darkgreen'</span>,   <span class="token string">'firebrick3'</span><span class="token punctuation">]</span>,
-                        \ <span class="token punctuation">[</span><span class="token string">'darkcyan'</span>,    <span class="token string">'RoyalBlue3'</span><span class="token punctuation">]</span>,
-                        \ <span class="token punctuation">[</span><span class="token string">'darkred'</span>,     <span class="token string">'SeaGreen3'</span><span class="token punctuation">]</span>,
-                        \ <span class="token punctuation">[</span><span class="token string">'darkmagenta'</span>, <span class="token string">'DarkOrchid3'</span><span class="token punctuation">]</span>,
-                        \ <span class="token punctuation">[</span><span class="token string">'brown'</span>,       <span class="token string">'firebrick3'</span><span class="token punctuation">]</span>,
-                        \ <span class="token punctuation">[</span><span class="token string">'gray'</span>,        <span class="token string">'RoyalBlue3'</span><span class="token punctuation">]</span>,
-                        \ <span class="token punctuation">[</span><span class="token string">'darkmagenta'</span>, <span class="token string">'DarkOrchid3'</span><span class="token punctuation">]</span>,
-                        \ <span class="token punctuation">[</span><span class="token string">'Darkblue'</span>,    <span class="token string">'firebrick3'</span><span class="token punctuation">]</span>,
-                        \ <span class="token punctuation">[</span><span class="token string">'red'</span>,         <span class="token string">'firebrick3'</span><span class="token punctuation">]</span>,
-                        \ <span class="token punctuation">[</span><span class="token string">'darkgreen'</span>,   <span class="token string">'RoyalBlue3'</span><span class="token punctuation">]</span>,
-                        \ <span class="token punctuation">[</span><span class="token string">'darkcyan'</span>,    <span class="token string">'SeaGreen3'</span><span class="token punctuation">]</span>,
-                        \ <span class="token punctuation">[</span><span class="token string">'darkred'</span>,     <span class="token string">'DarkOrchid3'</span><span class="token punctuation">]</span>,
-                        \ <span class="token punctuation">]</span>
+Plug <span class="token string">'kien/rainbow_parentheses.vim'</span>
+<span class="token keyword">let</span> g:rbpt_colorpairs <span class="token operator">=</span> <span class="token punctuation">[</span>
+            \ <span class="token punctuation">[</span><span class="token string">'brown'</span>,       <span class="token string">'RoyalBlue3'</span><span class="token punctuation">]</span>,
+            \ <span class="token punctuation">[</span><span class="token string">'Darkblue'</span>,    <span class="token string">'SeaGreen3'</span><span class="token punctuation">]</span>,
+            \ <span class="token punctuation">[</span><span class="token string">'darkgray'</span>,    <span class="token string">'DarkOrchid3'</span><span class="token punctuation">]</span>,
+            \ <span class="token punctuation">[</span><span class="token string">'darkgreen'</span>,   <span class="token string">'firebrick3'</span><span class="token punctuation">]</span>,
+            \ <span class="token punctuation">[</span><span class="token string">'darkcyan'</span>,    <span class="token string">'RoyalBlue3'</span><span class="token punctuation">]</span>,
+            \ <span class="token punctuation">[</span><span class="token string">'darkred'</span>,     <span class="token string">'SeaGreen3'</span><span class="token punctuation">]</span>,
+            \ <span class="token punctuation">[</span><span class="token string">'darkmagenta'</span>, <span class="token string">'DarkOrchid3'</span><span class="token punctuation">]</span>,
+            \ <span class="token punctuation">[</span><span class="token string">'brown'</span>,       <span class="token string">'firebrick3'</span><span class="token punctuation">]</span>,
+            \ <span class="token punctuation">[</span><span class="token string">'gray'</span>,        <span class="token string">'RoyalBlue3'</span><span class="token punctuation">]</span>,
+            \ <span class="token punctuation">[</span><span class="token string">'darkmagenta'</span>, <span class="token string">'DarkOrchid3'</span><span class="token punctuation">]</span>,
+            \ <span class="token punctuation">[</span><span class="token string">'Darkblue'</span>,    <span class="token string">'firebrick3'</span><span class="token punctuation">]</span>,
+            \ <span class="token punctuation">[</span><span class="token string">'red'</span>,         <span class="token string">'firebrick3'</span><span class="token punctuation">]</span>,
+            \ <span class="token punctuation">[</span><span class="token string">'darkgreen'</span>,   <span class="token string">'RoyalBlue3'</span><span class="token punctuation">]</span>,
+            \ <span class="token punctuation">[</span><span class="token string">'darkcyan'</span>,    <span class="token string">'SeaGreen3'</span><span class="token punctuation">]</span>,
+            \ <span class="token punctuation">[</span><span class="token string">'darkred'</span>,     <span class="token string">'DarkOrchid3'</span><span class="token punctuation">]</span>,
+            \ <span class="token punctuation">]</span>
 <span class="token keyword">let</span> g:rbpt_max <span class="token operator">=</span> 16
 <span class="token keyword">let</span> g:rbpt_loadcmd_toggle <span class="token operator">=</span> 0
 au VimEnter * RainbowParenthesesToggle
@@ -535,46 +509,78 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
-" 代码语法检查
-Plugin <span class="token string">'w0rp/ale'</span>
-<span class="token keyword">function</span> s:run_ale<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token string">" 代码片断插件
+"</span> Track the engine.
+Plug <span class="token string">'SirVer/ultisnips'</span>
+<span class="token string">" Trigger configuration. Do not use &lt;tab&gt; if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="</span><span class="token operator">&lt;</span>tab<span class="token operator">&gt;</span><span class="token string">"
+let g:UltiSnipsJumpForwardTrigger="</span><span class="token operator">&lt;</span>tab<span class="token operator">&gt;</span><span class="token string">"
+let g:UltiSnipsJumpBackwardTrigger="</span><span class="token operator">&lt;</span>S-tab<span class="token operator">&gt;</span><span class="token string">"
+"</span> If you want :UltiSnipsEdit to <span class="token function">split</span> your window.
+<span class="token keyword">let</span> g:UltiSnipsEditSplit<span class="token operator">=</span><span class="token string">"vertical"</span>
+
+
+<span class="token string">" vim 文件树，F3启动
+Plug 'https://github.com/scrooloose/nerdtree'
+nmap &lt;F3&gt; :NERDTreeToggle&lt;CR&gt;
+autocmd bufenter * if (winnr("</span>$<span class="token string">") == 1 &amp;&amp; exists("</span>b:NERDTree<span class="token string">") &amp;&amp; b:NERDTree.isTabTree()) | q | endif
+
+"</span> Vim Markdown
+Plug <span class="token string">'KeitaNakamura/tex-conceal.vim'</span> 
+Plug <span class="token string">'godlygeek/tabular'</span>
+Plug <span class="token string">'plasticboy/vim-markdown'</span>
+<span class="token keyword">let</span> g:vim_markdown_strikethrough <span class="token operator">=</span> 1
+<span class="token keyword">let</span> g:tex_conceal<span class="token operator">=</span><span class="token string">'abdmg'</span>
+<span class="token keyword">let</span> g:vim_markdown_math <span class="token operator">=</span> 1
+<span class="token keyword">let</span> g:vim_markdown_frontmatter <span class="token operator">=</span> 1
+<span class="token keyword">let</span> g:vim_markdown_toc_autofit <span class="token operator">=</span> 1
+nmap <span class="token operator">&lt;</span>F4<span class="token operator">&gt;</span> :Toc<span class="token operator">&lt;</span>ESC<span class="token operator">&gt;</span>
+
+<span class="token string">" 一些平时不大会用的插件
+function s:run_ale()
+
+    "</span> vim 增强状态栏
+    Plug <span class="token string">'https://github.com/bling/vim-airline'</span>
+    <span class="token string">" Python 缩进插件
+    Plug 'vim-scripts/indentpython.vim'
+    "</span> 自动格式化插件，快捷键F10
+    Plug <span class="token string">'Chiel92/vim-autoformat'</span>
+    nnoremap <span class="token operator">&lt;</span>F10<span class="token operator">&gt;</span> :Autoformat<span class="token operator">&lt;</span>CR<span class="token operator">&gt;</span>
+    <span class="token keyword">let</span> g:autoformat_autoindent <span class="token operator">=</span> 0
+    <span class="token keyword">let</span> g:autoformat_retab <span class="token operator">=</span> 0
+    <span class="token keyword">let</span> g:autoformat_remove_trailing_spaces <span class="token operator">=</span> 0
+
+    " 代码语法检查
+    Plug <span class="token string">'w0rp/ale'</span>
     <span class="token keyword">let</span> g:ale_fix_on_save <span class="token operator">=</span> 0
     <span class="token keyword">let</span> g:ale_completion_enabled <span class="token operator">=</span> 1
     <span class="token keyword">let</span> g:ale_sign_column_always <span class="token operator">=</span> 0
     <span class="token keyword">let</span> g:airline<span class="token comment" spellcheck="true">#extensions#ale#enabled = 1</span>
+
+    <span class="token string">"set conceallevel=2
+
+    "</span>Plug <span class="token string">'Valloric/YouCompleteMe'</span>
+    <span class="token string">"let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+    "</span><span class="token keyword">let</span> g:ycm_autoclose_preview_window_after_completion <span class="token operator">=</span> 1  <span class="token string">" 补全后自动关闭preview
+
 endfunction
 
-autocmd FileType php,python,c,java,shell,bash,vim,cpp call s:run_ale<span class="token punctuation">(</span><span class="token punctuation">)</span>
+"</span>autocmd FileType markdown,php,python,c,java,shell,bash,vim,cpp call s:run_ale<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
-<span class="token string">" Vim Markdown
-Plugin 'KeitaNakamura/tex-conceal.vim' 
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-let g:vim_markdown_strikethrough = 1
-let g:tex_conceal='abdmg'
-let g:vim_markdown_math = 1
-let g:vim_markdown_frontmatter = 1
-let g:vim_markdown_toc_autofit = 1
-nmap &lt;F4&gt; :Toc&lt;ESC&gt;
+call plug<span class="token comment" spellcheck="true">#end()</span>
 
-set conceallevel=2
-
-Plugin 'Valloric/YouCompleteMe'
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-let g:ycm_autoclose_preview_window_after_completion = 1  "</span>补全后自动关闭 preview<span class="token string">" All of your Plugins must be added before the following line
-call vundle#end()            "</span> required
-filetype plugin indent on    <span class="token string">"required"</span> To ignore plugin indent changes, instead use:
-<span class="token string">"filetype plugin on"</span>
-<span class="token string">"Brief help"</span> :PluginList       - lists configured plugins
-<span class="token string">":PluginInstall    - installs plugins; append <span class="token variable"><span class="token variable">`</span><span class="token operator">!</span><span class="token variable">`</span></span> to update or just :PluginUpdate"</span> :PluginSearch foo - searches <span class="token keyword">for</span> foo<span class="token punctuation">;</span> append <span class="token variable"><span class="token variable">`</span><span class="token operator">!</span><span class="token variable">`</span></span> to refresh local cache
-<span class="token string">":PluginClean      - confirms removal of unused plugins; append <span class="token variable"><span class="token variable">`</span><span class="token operator">!</span><span class="token variable">`</span></span> to auto-approve removal"</span>
-<span class="token string">"see :h vundle for more details or wiki for FAQ"</span> Put your non-Plugin stuff after this line
-
-<span class="token string">"说明，以下代码是用于修改插入模式的光标为竖线，普通模式下为方块状"</span> 这主要是因为想保留普通终端下的方块输入形状。
-<span class="token string">"if has("</span>autocmd<span class="token string">")"</span>  au VimEnter,InsertLeave * silent execute <span class="token string">'!echo -ne"\e[1 q"'</span><span class="token operator">|</span> redraw<span class="token operator">!</span><span class="token string">"  au InsertEnter,InsertChange *
-"</span>\ <span class="token keyword">if</span> v:insertmode <span class="token operator">==</span><span class="token string">'i'</span><span class="token operator">|</span><span class="token string">"    \   silent execute '!echo -ne"</span>\e<span class="token punctuation">[</span>5 q<span class="token string">"'| redraw! |"</span>    \ elseif v:insertmode <span class="token operator">==</span> <span class="token string">'r'</span> <span class="token operator">|</span>
-<span class="token string">"\   silent execute'!echo -ne "</span>\e<span class="token punctuation">[</span>3 q<span class="token string">"' | redraw! |
-"</span>\ endif<span class="token string">"  au VimLeave * silent execute '!echo -ne"</span>\e<span class="token punctuation">[</span> q<span class="token string">"'| redraw!"</span>endif
+<span class="token string">" 说明，以下代码是用于修改插入模式的光标为竖线，普通模式下为方块状
+"</span> 这主要是因为想保留普通终端下的方块输入形状。
+<span class="token string">"if has("</span>autocmd<span class="token string">")
+"</span>  au VimEnter,InsertLeave * silent execute <span class="token string">'!echo -ne "\e[1 q"'</span> <span class="token operator">|</span> redraw<span class="token operator">!</span>
+<span class="token string">"  au InsertEnter,InsertChange *
+"</span>    \ <span class="token keyword">if</span> v:insertmode <span class="token operator">==</span> <span class="token string">'i'</span> <span class="token operator">|</span>
+<span class="token string">"    \   silent execute '!echo -ne "</span>\e<span class="token punctuation">[</span>5 q<span class="token string">"' | redraw! |
+"</span>    \ elseif v:insertmode <span class="token operator">==</span> <span class="token string">'r'</span> <span class="token operator">|</span>
+<span class="token string">"    \   silent execute '!echo -ne "</span>\e<span class="token punctuation">[</span>3 q<span class="token string">"' | redraw! |
+"</span>    \ endif
+<span class="token string">"  au VimLeave * silent execute '!echo -ne "</span>\e<span class="token punctuation">[</span> q<span class="token string">"' | redraw!
+"</span>endif
 </code></pre>
 <p>以下为旧原文*</p>
 <hr>
